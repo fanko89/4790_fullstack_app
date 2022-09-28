@@ -43,5 +43,5 @@ async function getAllMovies(pageOne, searchTerms) {
             console.error(err)
         }
     }
-return allTheMovies
+return allTheMovies.filter(movie => (movie.Type === 'movie' && movie.Poster !== 'N/A')) // filter only movies
 } 

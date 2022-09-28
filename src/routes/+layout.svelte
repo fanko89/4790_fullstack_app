@@ -1,6 +1,6 @@
 <script>
     import "../app.css";
-    import Header from '../lib/components/header/header.svelte'
+    import Header from '../lib/components/header/Header.svelte'
   </script>
 <div data-theme="retro" class="h-screen">
 <Header/>

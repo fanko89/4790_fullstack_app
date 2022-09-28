@@ -14,7 +14,7 @@
       <div class="max-w-md">
         <h1 class="mb-5 text-5xl font-bold">Hey there</h1>
         <p class="mb-5">Welcome to my DGM 3790 SvelteKit Project!</p>
-        <button class="btn btn-primary">Get Started</button>
+        <button class="btn btn-primary">Click Here</button>
       </div>
     </div>
   </div>

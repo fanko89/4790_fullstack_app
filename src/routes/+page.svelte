@@ -7,5 +7,14 @@
     npm run dev  see localhost on browser
 -->
 
-<h1>Welcome to my svelte project</h1>
-<p>visit <a href="/avatars">avatars</a> to see avatar images</p>
+
+<div class="hero min-h-screen" style="background-image: url(https://placeimg.com/1000/800/arch);">
+    <div class="hero-overlay bg-opacity-60"></div>
+    <div class="hero-content text-center text-neutral-content">
+      <div class="max-w-md">
+        <h1 class="mb-5 text-5xl font-bold">Hey there</h1>
+        <p class="mb-5">Welcome to my DGM 3790 SvelteKit Project!</p>
+        <button class="btn btn-primary">Get Started</button>
+      </div>
+    </div>
+  </div>

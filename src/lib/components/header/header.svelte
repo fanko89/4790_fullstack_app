@@ -22,7 +22,7 @@
  <div>
     <form method ="POST">
         <div class="form-control">
-            <input type="search" name="searchTerms" placeholder="movies Search"/>
+            <input type="search" name="searchTerms" placeholder="Movies Search"/>
         </div>
     </form>
  </div>

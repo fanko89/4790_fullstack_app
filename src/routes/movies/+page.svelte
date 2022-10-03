@@ -6,20 +6,21 @@ export let form, errors
 //let firstMovie = data.movies.Search[0]
    
 </script>
+
 {#if errors?.title}
-<p class="error">(errors.title}</p>
+<p class="error">{errors.title}</p>
 {/if}
 
 <main class="flex flex-wrap justify-center">
-  {#if !form.length}
+  {#if !form}
   <div class="card">
-    <div class-body>
+    <div class="card-body">
       <h2 class="card-title">No movies loaded. make sure your movie is a valid title</h2>
     </div>
     </div>
-    {/if}
+    {:else}
  {#each form as movie}
-    <div class="card w-96 bg-base-100 shadow-xl m-3">
+    <div class="card w-96 bg-base-100 shadow-xl m-4">
       <figure>
         <figure><img src={movie.Poster} alt="moive poster"/>
         </figure>
@@ -32,4 +33,5 @@ export let form, errors
         </div>
       </div>
 {/each}
+{/if}
 </main>

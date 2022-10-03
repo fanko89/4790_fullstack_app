@@ -1,7 +1,5 @@
 <script>
-
-
-
+	import { enhance } from "$app/forms"
 </script>
 
 <header class="navbar bg-base-100">
@@ -19,10 +17,10 @@
         <a href="/aggregator" class="btn btn-ghost normal-case text-xl">News Aggregator</a>
 
  </div>
- <div>
-    <form method ="POST">
+<div>
+    <form method ="POST" action="/movies" use:enhance>
         <div class="form-control">
-            <input type="search" name="searchTerms" placeholder="Movies Search"/>
+            <input class="input input-bordered input-md" type="search" name="searchTerms" placeholder="Movies Search"/>
         </div>
     </form>
  </div>

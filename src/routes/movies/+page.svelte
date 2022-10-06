@@ -1,10 +1,5 @@
 <script>
 export let form, errors
-//reactive statement
-//$:console.log(form);
-//reactive variable     
-//let firstMovie = data.movies.Search[0]
-   
 </script>
 
 {#if errors?.title}

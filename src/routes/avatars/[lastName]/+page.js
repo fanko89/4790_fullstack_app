@@ -8,6 +8,7 @@ export async function load({ params }) {
     console.log(params)
     return{
         lastName,
+        address: faker.address.streetAddress(),
         firstName: faker.name.firstName(),
         avatar:`https://avatars.dicebear.com/api/big-smile/${lastName}.svg`,
         title: faker.name.jobTitle(),

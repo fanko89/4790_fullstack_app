@@ -4,6 +4,7 @@
   </script>
 <div data-theme="retro" class="h-screen">
 <Header/>
+<p class= "heroFooter"></p>
   
   <slot />
   <footer class="footer footer-center p-4 bg-neutral sticky top-[100evh] text-neutral-content">

@@ -15,7 +15,7 @@ export let form, errors
   {#if !form}
   <div class="card">
     <div class="card-body">
-      <h2 class="card-title">No movies loaded. make sure your movie is a valid title</h2>
+      <h2 class="card-title">Not a valid title</h2>
     </div>
     </div>
     {:else}
@@ -28,7 +28,7 @@ export let form, errors
          <h2 class="card-title">{movie.Title}</h2>
           <p>{movie.Year}</p>
           <div class="card-actions justify-end">
-            <button class="btn btn-primary">get details</button>
+            <button class="btn btn-primary">more details</button>
           </div>
         </div>
       </div>

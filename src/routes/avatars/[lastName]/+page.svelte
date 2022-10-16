@@ -11,6 +11,7 @@
         <li>Phone: {data.phone}</li>
         <li>Email: {data.email}</li>
         <li>Address: {data.address}</li>
+        <li>end of information</li>
      
     </ul>
 </main>

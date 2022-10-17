@@ -16,7 +16,7 @@ export let form, errors
   <div class="card">
     <div class="card-body">
       <img src="/images/stop.png" alt="stop sign"/>
-      <h2 class="text-5x1 font-bold text-center">Not a valid title</h2>
+      <h2 class="text-5x1 font-bold text-center">No moive. Please enter an valid title is search box</h2>
     </div>
     </div>
     {:else}

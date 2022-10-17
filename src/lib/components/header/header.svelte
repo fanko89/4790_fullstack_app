@@ -20,7 +20,7 @@
 <div>
     <form method ="POST" action="/movies" use:enhance>
         <div class="form-control">
-            <input class="input input-bordered input-md" type="search" name="searchTerms" placeholder="Movies Search"/>
+            <input class="input input-bordered input-md w-100" type="search" name="searchTerms" placeholder="Movies Search"/>
         </div>
     </form>
  </div>

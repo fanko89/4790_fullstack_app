@@ -1,10 +1,12 @@
 <script>
-export let data, errors
-$: console.log(data.topStories)
+  import sanitizeHtml from "sanitize-html" //changing html to text
+  export let data, errors
+  $: console.log(data.topStories)
 
-let newsContent = ''
-function getNews(newsStory){
-  newsContent =newsStory.description 
+  let newsContent = ''
+
+  function getStory(story) {
+   newsContent = sanitizeHtml(story.text)
 
 }
 </script>
@@ -15,23 +17,23 @@ function getNews(newsStory){
       <!-- Page content here -->
       <label for="my-drawer-2" class="btn btn-primary drawer-button">Open drawer</label>
       <div class="hero bg-base-300">
-        <p>{newsContent}</p>
+        <p>{@html newsContent}</p>
 
       </div>
     
     </div> 
     <div class="drawer-side">
       <label for="my-drawer-2" class="drawer-overlay"></label> 
-      <ul class="menu p-2 overflow-y-auto w-80 bg-base-100 text-base-content">
+      <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
         <!-- Sidebar content here -->
-<!--         {#each data.newsData as newsStory (newsStory.uuid)}
-        <li class="card" on:click={getNews(newsStory)}>
+    {#each data.topStories as story}
+        <li class="card" on:click={getStory(story)}>
           <figure class="flex flex-col">
-            <img src={newsStory.image_url} alt="news pic"/>
-            <figcaption>{newsStory.title}</figcaption>
+        <!--     <img src={story.image_url} alt="news pic"/> -->
+            <figcaption>{story.title}</figcaption>
           </figure>
         </li>
-     {/each} -->
+     {/each}
       </ul>
     
     </div>

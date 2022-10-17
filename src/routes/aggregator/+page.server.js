@@ -1,4 +1,4 @@
-import {NEWS_APIKEY} from '$env/static/private'
+//import {NEWS_APIKEY} from '$env/static/private'
 import {error} from '@sveltejs/kit'
 
 
@@ -15,31 +15,18 @@ export async function load() {
 }
 
 async function getAllTopStories(topStoryIDArray) {
-   // let topStories = []
-/*     //console.log(pageOne)
-    const totalResults = parseInt(pageOne.totalResults)
-    if (totalResults === 0 ) return
-    if (totalResults > 0 && totalResults < 11) {
-        return pageOne.Search // return just the array of the results
-    }
-    allTheMovies = [...pageOne.Search]
-    // how many times to loop
-    let counter = Math.ceil(totalResults / 10) //rounding up from 1.5 to 2 with math  */
- const topStories = topStoryIDArray.map(async (element, index) => {
-    console.log(element, index)
-    if (index <= 9){
-    try {
-        const response = await fetch(` https://hacker-news.firebaseio.com/v0/item/${element}.json?print=pretty`)
-     const article = response.json()
-       console.log(JSON.stringify(article))
+    let topStories = []
 
-        
-   
-    } catch (err){
-        throw error(404, 'nothing found')
+    const topTen = topStoryIDArray.slice(0, 30)
+    for (const element of topTen) {
+        try {
+            const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${element}.json?print=pretty`)
+            const article = await response.json()
+            topStories.push(article)
+        }
+        catch (err) {
+            console.error(err)
+        }
     }
-
+    return topStories
 }
- }) 
-return topStories
-} 

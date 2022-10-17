@@ -15,7 +15,8 @@ export let form, errors
   {#if !form}
   <div class="card">
     <div class="card-body">
-      <h2 class="card-title">Not a valid title</h2>
+      <img src="/images/stop.png" alt="stop sign"/>
+      <h2 class="text-5x1 font-bold text-center">Not a valid title</h2>
     </div>
     </div>
     {:else}

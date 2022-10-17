@@ -7,5 +7,8 @@
     <progress class="progress progress-primary w-56" value="0" max="100"></progress>
     <div class="hero-content text-center">
         <h1 class="text-4xl font-bold">Example dashboard</h1>
+       {#each data as pic}
+       <img src={pic.url} alt="NASDAQ company logos">
+       {/each}
     </div>
 </div>

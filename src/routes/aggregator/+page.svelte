@@ -1,6 +1,6 @@
 <script>
 export let data, errors
-$: console.log(data.newsData)
+$: console.log(data.topStories)
 
 let newsContent = ''
 function getNews(newsStory){
@@ -24,14 +24,14 @@ function getNews(newsStory){
       <label for="my-drawer-2" class="drawer-overlay"></label> 
       <ul class="menu p-2 overflow-y-auto w-80 bg-base-100 text-base-content">
         <!-- Sidebar content here -->
-        {#each data.newsData as newsStory (newsStory.uuid)}
+<!--         {#each data.newsData as newsStory (newsStory.uuid)}
         <li class="card" on:click={getNews(newsStory)}>
           <figure class="flex flex-col">
             <img src={newsStory.image_url} alt="news pic"/>
             <figcaption>{newsStory.title}</figcaption>
           </figure>
         </li>
-     {/each}
+     {/each} -->
       </ul>
     
     </div>

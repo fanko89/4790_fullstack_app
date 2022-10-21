@@ -29,7 +29,7 @@
     {#each data.topStories as story}
         <li class="card" on:click={getStory(story)}>
           <figure class="flex flex-col">
-        <!--     <img src={story.image_url} alt="news pic"/> -->
+        <img src={story.image_url} alt="news pic"/>
             <figcaption>{story.title}</figcaption>
           </figure>
         </li>

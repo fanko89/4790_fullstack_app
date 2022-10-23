@@ -5,7 +5,7 @@
 
 <main>
     <h2>{data.firstName} {data.lastName}</h2>
-    <img src="{data.avatar}" alt="avatar"/>
+    <img src="{data.avatar}" alt="person avatar"/>
     <ul>
         <li>Title: {data.title}</li>
         <li>Phone: {data.phone}</li>

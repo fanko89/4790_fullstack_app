@@ -1,13 +1,11 @@
 <script>
   import sanitizeHtml from "sanitize-html" //changing html to text
-  export let data
-  $: console.log(data.topStories)
+  export let data, errors
+  //$: console.log(data.topStories)
 
   let newsContent = ''
-
   function getStory(story) {
-   newsContent = sanitizeHtml(story.text)
-
+   newsContent = (story.text)
 }
 </script>
 

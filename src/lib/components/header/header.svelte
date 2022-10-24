@@ -1,4 +1,4 @@
-<!-- <script>
+<script>
 	import { enhance } from "$app/forms"
 
     let themeOptions = ['light', 'dark', 'cupcake', 'aqua', 'dracula', 'winter']
@@ -57,4 +57,4 @@ function logout() {
 </div>
 
 
-</header> -->
+</header> 

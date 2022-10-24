@@ -31,13 +31,13 @@
 	
 </script>
 
-<div class="flex flex-wrap bg-slate-300">
-	<div class="carousel carousel-center p-4 max-h-96 max-w-md m-4 space-x-4 bg-neutral rounded-box">
-		{#each pics as pic}
+<div class="flex flex-wrap justify-center bg-slate-100">
+	<div class="carousel carousel-center p-4 max-h-24 max-w-md m-20 space-x-4 bg-neutral rounded-box">
+	<!-- 	{#each pics as pic} -->
 			<div class="carousel-item">
-				<img class="rounded-box" src={pic.url} alt="Nasa pic" />
+				<img class="rounded-box" src={data.logo} alt="stock pic" />
 			</div>
-		{/each}
+<!-- 		{/each} -->
 	</div>
 	<div class="w-96 flex items-center">
 	<Line data={chartData} />
@@ -48,7 +48,7 @@
 	<!-- Stats element begins here-->
 	<Stats />
 	<!-- Mission statement here -->
-	<div class="card w-full bg-base-100 shadow-xl">
+	<div class="card w-full bg-base-200 shadow-xl">
 		<div class="card-body">
 			<h2 class="card-title">{companyName} Mission Statement</h2>
 			<p>

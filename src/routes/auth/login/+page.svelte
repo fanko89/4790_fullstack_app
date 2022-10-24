@@ -1,11 +1,16 @@
 <script>
 	import { enhance } from '$app/forms'
+	//import { goto } from '$app/navigation'
 
 	//making an object for the login
     const credentials = {
         email: '',
         password: ''
     }
+	
+	//function navigate() {
+	//	goto('/dashboard')
+	//}
 
 </script>
 

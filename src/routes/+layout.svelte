@@ -1,9 +1,8 @@
 <script>
     import "../app.css";
-    import Header from '../lib/components/header/Header.svelte'
+  
   </script>
-<div data-theme="retro" class="h-screen">
-<Header/>
+<div data-theme="light" class="h-screen">
   
   <slot />
   <footer class="footer footer-center p-4 bg-neutral sticky top-[100evh] text-neutral-content">

@@ -1,6 +1,7 @@
 <script>
 	import { enhance } from '$app/forms'
 
+	//making an object for the login
     const credentials = {
         email: '',
         password: ''

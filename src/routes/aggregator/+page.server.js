@@ -15,18 +15,19 @@ export async function load() {
 }
 
 async function getAllTopStories(topStoryIDArray) {
-    let topStories = []
+	let topStories = [];
 
-    const topTen = topStoryIDArray.slice(0, 30)
-    for (const element of topTen) {
-        try {
-            const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${element}.json?print=pretty`)
-            const article = await response.json()
-            topStories.push(article)
-        }
-        catch (err) {
-            console.error(err)
-        }
-    }
-    return topStories
+	const topTen = topStoryIDArray.slice(0, 11);
+	for (const element of topTen) {
+		try {
+			const response = await fetch(
+				`https://hacker-news.firebaseio.com/v0/item/${element}.json?print=pretty`
+			);
+			const article = await response.json();
+			topStories.push(article);
+		} catch (err) {
+			console.error(err);
+		}
+	}
+	return topStories;
 }

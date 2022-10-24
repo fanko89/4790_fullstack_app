@@ -14,7 +14,7 @@
 <div class="drawer">
     <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col items-center justify-center">
-      <!-- Page content here -->
+      <!-- Page content goes here -->
       <label for="my-drawer-2" class="btn btn-primary drawer-button">Open</label>
       <div class="hero bg-base-300">
         <p>{@html newsContent}</p>

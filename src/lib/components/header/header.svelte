@@ -1,5 +1,11 @@
 <script>
 	import { enhance } from "$app/forms"
+
+    let themeOptions = ['light', 'dark', 'cupcake', 'aqua', 'dracula', 'winter']
+
+function logout() {
+    console.log("User logged out")
+}
 </script>
 
 <header class="navbar bg-base-100">
@@ -14,7 +20,7 @@
         <a href="/avatars" class="btn btn-ghost normal-case text-xl">Avatars</a>
         <a href="/movies" class="btn btn-ghost normal-case text-xl">movies</a>
         <a href="/dashboard" class="btn btn-ghost normal-case text-xl">Dashboard</a>
-        <a href="/aggregator" class="btn btn-ghost normal-case text-xl">News Aggregator</a>
+        <a href="/aggregator" class="btn btn-ghost normal-case text-xl">Aggregator</a>
 
  </div>
 <div>
@@ -24,6 +30,31 @@
         </div>
     </form>
  </div>
+ <div class="dropdown dropdown-end">
+    <label tabindex="0" class="btn btn-ghost btn-circle avatar m-1" for="userIcon">
+        <div class="w-16 rounded-full">
+            <img id="userIcon" src="https://placeimg.com/90/90/people" alt="User icon" />
+        </div>
+    </label>
+    <ul
+        tabindex="0"
+        class="mt-3 p-2 dropdown-content bg-base-100 menu menu-compact shadow rounded-box w-36"
+    >
+        <li><a>Profile</a></li>
+        <li><a>Settings</a></li>
+        <li>
+            <select class="select w-full max-x-xs">
+                <option>Theme</option>
+                {#each themeOptions as theme}
+                    <option value={theme}>
+                        {theme}
+                    </option>
+                {/each}
+            </select>
+        </li>
+        <li><a on:click={logout}>Logout</a></li>
+    </ul>
+</div>
 
 
 </header>

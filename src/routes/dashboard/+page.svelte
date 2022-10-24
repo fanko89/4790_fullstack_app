@@ -21,13 +21,13 @@
  	import { chartData } from '../../lib/components/chartData.js';
 	import { donutData } from '../../lib/components/donutData.js'; 
 	import Stats from '../../lib/components/Stats.svelte';
-	import { faker } from '@faker-js/faker';
+
 
 	export let data;
 	export const prerender = true;
 	// $: console.log(Object.values(data))
 	let pics = Object.values(data);
-	const companyName = faker.company.name()
+
 	
 </script>
 
@@ -50,11 +50,10 @@
 	<!-- Mission statement here -->
 	<div class="card w-full bg-base-200 shadow-xl">
 		<div class="card-body">
-			<h2 class="card-title">{companyName} Mission Statement</h2>
+			<h2 class="card-title">{data.name} Information</h2>
 			<p>
-				Our company {companyName} exists to {faker.company.bsBuzz()}
-				{faker.company.bsAdjective()}
-				{faker.company.bsNoun()} using what we refer to as our "{faker.company.catchPhrase()}"!
+				Our company {data.name} is avalible on the {data.exchange} in the industry of 
+				{data.finnhubIndustry} with a share of ${data.shareOutstanding} and a overall capitalization of ${data.marketCapitalization}
 			</p>
 		</div>
 	</div>

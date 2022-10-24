@@ -5,7 +5,7 @@
 
   let newsContent = ''
   function getStory(story) {
-   newsContent = (story.text)
+   newsContent = sanitizeHtml(story.text)
 }
 </script>
 

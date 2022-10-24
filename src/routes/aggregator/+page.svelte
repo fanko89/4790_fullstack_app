@@ -16,7 +16,7 @@
     <div class="drawer-content flex flex-col items-center justify-center">
       <!-- Page content here -->
       <label for="my-drawer-2" class="btn btn-primary drawer-button">Open</label>
-      <div class="hero bg-base-200">
+      <div class="hero bg-base-300">
         <p>{@html newsContent}</p>
 
       </div>

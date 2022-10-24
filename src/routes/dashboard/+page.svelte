@@ -16,10 +16,10 @@
  -->
 
 <script>
-	//import { Line, Doughnut } from 'svelte-chartjs';
-	//import 'chart.js/auto';
- 	//import { chartData } from '../../lib/components/chartData.js';
-	//import { donutData } from '../../lib/components/donutData.js'; 
+	import { Line, Doughnut } from 'svelte-chartjs';
+	import 'chart.js/auto';
+ 	import { chartData } from '../../lib/components/chartData.js';
+	import { donutData } from '../../lib/components/donutData.js'; 
 	import Stats from '../../lib/components/Stats.svelte';
 	import { faker } from '@faker-js/faker';
 
@@ -40,10 +40,10 @@
 		{/each}
 	</div>
 	<div class="w-96 flex items-center">
-	<!-- 	<Line data={chartData} /> -->
+	<Line data={chartData} />
 	</div>
 	<div class="w-96">
-	<!-- 	<Doughnut class="p-16" data={donutData} /> -->
+	<Doughnut class="p-16" data={donutData} />
 	</div>
 	<!-- Stats element begins here-->
 	<Stats />

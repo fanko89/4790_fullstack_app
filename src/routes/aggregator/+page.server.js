@@ -1,5 +1,5 @@
 //import {NEWS_APIKEY} from '$env/static/private'
-
+import {error} from '@sveltejs/kit'
 
 
 

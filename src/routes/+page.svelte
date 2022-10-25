@@ -2,9 +2,11 @@
     npm i daisyui           installed in dependancies in package.json
     npm i -D tailwindcss postcss autoprefixer    -D means putting it in devDependancies in package.json
     npx tailwindcss init
-    npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
-
-    npm run dev  see localhost on browser
+    npx tailwindcss -i ./src/app.css -o ./dist/output.css --watch
+    npm i svelte-chartjs chart.js
+    npm install --save-dev @faker-js/faker
+    npm install sanitize-html
+    npm run dev                 see localhost on browser
 -->
 
 <script>

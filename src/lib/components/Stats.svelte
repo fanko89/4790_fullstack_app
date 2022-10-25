@@ -26,7 +26,7 @@
 		</div>
 		<div class="stat-title">Total Likes</div>
 		<div class="stat-value text-primary">{faker.random.numeric(2)}.{faker.random.numeric()}K</div>
-		<div class="stat-desc">{faker.random.numeric(2)}% more than last month</div>
+		<div class="stat-desc">{faker.random.numeric(2)}% lot more than last month</div>
 	</div>
 
 	<div class="stat">

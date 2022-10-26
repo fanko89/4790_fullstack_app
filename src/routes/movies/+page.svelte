@@ -23,7 +23,11 @@ export let form, errors
  {#each form as movie}
     <div class="card w-96 bg-base-100 shadow-xl m-4">
       <figure>
+        <a href='#'>
+          <form method="POST" action="?/details" use:enhance>
         <figure><img src={movie.Poster} alt="moive poster"/>
+        </form>
+        </a>
         </figure>
         <div class="card-body">
          <h2 class="card-title">{movie.Title}</h2>

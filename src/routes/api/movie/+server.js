@@ -4,7 +4,6 @@ let allMovies = []
 
 export async function GET() {
     let movieData
-    let searchTerms = 'Avengers'
     try {
         const omdb_response = await fetch(`https://www.omdbapi.com/?apikey=${OMDB_APIKEY}&s=${searchTerms}`)
         movieData = await omdb_response.json()

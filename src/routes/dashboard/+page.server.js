@@ -25,6 +25,7 @@ export async function load() {
         return finnhubData
     } catch (err) {
         console.error(err)
+        
     }
 }
 

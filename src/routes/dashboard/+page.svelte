@@ -28,6 +28,12 @@
 	// $: console.log(Object.values(data))
 	let pics = Object.values(data);
 
+	let showModal = false
+
+function toggleModal() {
+  showModal = !showModal
+}
+
 	
 </script>
 
@@ -35,7 +41,21 @@
 	<div class="carousel carousel-center p-4 max-h-24 max-w-md m-20 space-x-4 bg-neutral rounded-box">
 	<!-- 	{#each pics as pic} -->
 			<div class="carousel-item">
+				<div class="modal" class:modal-open={showModal}>
+					<div class="modal-box">
+						<h3 class="font-bold text-lg">Apple stock image</h3>
+						<p class="py-4">
+							This is a link to the {data.name} website <a href="{data.weburl}"><br><br>CLICK HERE!</a>
+						</p>
+						<div class="modal-action">
+							<!-- svelte-ignore a11y-click-events-have-key-events -->
+							<label for="my-modal" class="btn" on:click={toggleModal}>close</label>
+						</div>
+					</div>
+					</div>
+					<a href="#" on:click={toggleModal}>
 				<img class="rounded-box" src={data.logo} alt="stock pic" />
+			</a>
 			</div>
 <!-- 		{/each} -->
 	</div>
@@ -43,7 +63,7 @@
 	<Line data={chartData} />
 	</div>
 	<div class="w-96">
-	<Doughnut class="p-16" data={donutData} />
+	<Doughnut class="p-10" data={donutData} />
 	</div>
 	<!-- Stats element begins here-->
 	<Stats />

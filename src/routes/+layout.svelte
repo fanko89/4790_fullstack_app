@@ -1,9 +1,10 @@
 <script>
     import "../app.css";
+    import { theme } from '$lib/stores/theme'
   
   
   </script>
-<div data-theme="light" class="h-screen">
+<div data-theme={$theme} class="h-screen">
   
   <slot />
   <footer class="footer footer-center p-4 bg-neutral sticky top-[100evh] text-neutral-content">

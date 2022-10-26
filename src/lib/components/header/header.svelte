@@ -1,8 +1,11 @@
 <script>
 	import { enhance } from "$app/forms"
+    import { theme } from '$lib/stores/theme'
 
     let themeOptions = ['light', 'dark', 'cupcake', 'cyberpunk', 'coffee', 'winter']
-    let selectedTheme
+	let selectedTheme
+
+	$: if(selectedTheme && selectedTheme !== 'Theme') $theme = selectedTheme
 
 function logout() {
     console.log("User logged out")
@@ -43,8 +46,8 @@ function logout() {
         <li><a>Profile</a></li>
         <li><a>Settings</a></li>
         <li>
-            <select class="select w-full max-x-s">
-                <option>Theme</option>
+            <select bind:value={selectedTheme} class="select w-full max-x-xs">
+                <option disabled selected>Theme</option>
                 {#each themeOptions as theme}
                     <option value={theme}>
                         {theme}
@@ -55,6 +58,4 @@ function logout() {
         <li><a on:click={logout}>Logout</a></li>
     </ul>
 </div>
-
-
 </header>

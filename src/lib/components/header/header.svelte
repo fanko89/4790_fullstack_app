@@ -31,20 +31,7 @@ function logout() {
     </form>
  </div>
  <div class="dropdown dropdown-end">
-    <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-    <label tabindex="0" class="btn btn-ghost btn-circle avatar m-1" for="icon">
-        <div class="w-16 rounded-full">
-            <img id="icon" src="https://placeimg.com/90/90/people" alt="User icon" />
-        </div>
-    </label>
-        <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-    <ul
-        tabindex="0"
-        class="mt-3 p-2 dropdown-content bg-base-100 menu menu-compact shadow rounded-box w-36"
-    >
-        <li><a>Profile</a></li>
-        <li><a>Settings</a></li>
-        <li>
+
             <select class="select w-full max-x-xs">
                 <option>Theme</option>
                 {#each themeOptions as theme}
@@ -53,9 +40,9 @@ function logout() {
                     </option>
                 {/each}
             </select>
-        </li>
-        <li><a on:click={logout}>Logout</a></li>
-    </ul>
+    
+
+
 </div>
 
 

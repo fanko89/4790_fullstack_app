@@ -37,7 +37,7 @@ function logout() {
  </div>
  <div class="dropdown dropdown-end">
     <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-    <label tabindex="0" class="btn btn-ghost btn-circle avatar m-1" for="icon">
+    <label tabindex="0" class="btn btn-ghost btn-circle avatar m-2" for="icon">
         <div class="w-16 rounded-full">
             <img id="icon" src="https://placeimg.com/90/90/people" alt="User icon" />
         </div>

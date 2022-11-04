@@ -26,7 +26,7 @@ async function getAllMovies(pageOne, searchTerms) {
     //console.log(pageOne)
     const totalResults = parseInt(pageOne.totalResults)
     if (totalResults === 0 ) return
-    if (totalResults > 0 && totalResults < 11) {
+    if (totalResults > 0 && totalResults < 10) {
         return pageOne.Search // return just the array of the results
     }
     allTheMovies = [...pageOne.Search]

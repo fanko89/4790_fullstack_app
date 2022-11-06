@@ -12,14 +12,20 @@ export const actions =  {
         } catch (err) {
             console.error(err)
         }
-    
- /*       return new Response(JSON.stringify({ movies: allMovies }), {
-            headers: {
-                'content-type': 'application/json; charset=utf-8'
+    },
+        details: async ({ request }) => {
+            const data = await request.formData()
+            const movieID = data.get('movieID')
+            try {
+                const omdb_response = await fetch(`https://www.omdbapi.com/?apikey=${OMDB_APIKEY}&i=${movieID}`)
+                const movieData = await omdb_response.json()
+                return movieData
+            } catch (err) {
+                console.log('Error trying to fetch movie details', err)
             }
-        }) */
+        }
     }
-}
+    
 
 async function getAllMovies(pageOne, searchTerms) {
     let allTheMovies = []

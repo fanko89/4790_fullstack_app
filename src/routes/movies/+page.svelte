@@ -1,10 +1,22 @@
 <script>
-export let form, errors
-//reactive statement
-//$:console.log(form);
-//reactive variable     
-//let firstMovie = data.movies.Search[0]
-   
+	import { enhance } from '$app/forms'
+	import MovieModal from '../../lib/components/MovieModal/MovieModal.svelte';
+	export let form, errors
+	//$: console.log(form)
+	
+	let showModal = false
+	let movieDetails = {}
+
+	function toggleModal() {
+		showModal = !showModal
+	}
+
+	const getMovieDetails = () => {
+		return async ({ result }) => {
+			movieDetails = await result.data
+			toggleModal()
+		}
+	}
 </script>
 
 {#if errors?.title}
@@ -24,8 +36,9 @@ export let form, errors
     <div class="card w-96 bg-base-100 shadow-xl m-4">
       <figure>
         <a href='#'>
-          <form method="POST" action="?/details" use:enhance>
-        <figure><img src={movie.Poster} alt="moive poster"/>
+          <form method="POST" action="?/details"use:enhance={getMovieDetails}>
+            <input type="image" name="movieID" value={movie.imdbID} id="posterMovieID" src={movie.Poster} alt="Submit"/>
+          <!-- <img src={movie.Poster} alt="Movie poster" /> -->
         </form>
         </a>
         </figure>
@@ -39,4 +52,5 @@ export let form, errors
       </div>
 {/each}
 {/if}
+<MovieModal {movieDetails} {showModal} {toggleModal}/>
 </main>

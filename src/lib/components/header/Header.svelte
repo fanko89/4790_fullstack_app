@@ -26,6 +26,7 @@
 		<a href="/movies" class="btn btn-ghost normal-case text-xl">Movies</a>
 		<a href="/dashboard" class="btn btn-ghost normal-case text-xl">Dashboard</a>
 		<a href="/aggregator" class="btn btn-ghost normal-case text-xl">Aggregator</a>
+		<a href="/drink" class="btn btn-ghost normal-case text-xl">Drinks</a>
 	</div>
 	<!-- <div>
 		<form method="POST" action="/movies?/search" use:enhance>

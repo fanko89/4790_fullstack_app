@@ -1,7 +1,7 @@
 import { OMDB_APIKEY } from '$env/static/private'
 
 export const actions =  {
-    default: async ({request}) => {
+    search: async ({request}) => {
         const data = await request.formData()
         const searchTerms = data.get('searchTerms')
         try {
@@ -16,9 +16,9 @@ export const actions =  {
         details: async ({ request }) => {
             const data = await request.formData()
             const movieID = data.get('movieID')
-            try {
+            try { //when your servers not up and running you need a try catch block
                 const omdb_response = await fetch(`https://www.omdbapi.com/?apikey=${OMDB_APIKEY}&i=${movieID}`)
-                const movieData = await omdb_response.json()
+                const movieData = await omdb_response.json() //only get the json data instead of everything
                 return movieData
             } catch (err) {
                 console.log('Error trying to fetch movie details', err)

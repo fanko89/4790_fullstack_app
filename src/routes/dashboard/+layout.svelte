@@ -28,13 +28,7 @@ function logout() {
         <a href="/aggregator" class="btn btn-ghost normal-case text-xl">Aggregator</a>
 
  </div>
-<div>
-    <form method ="POST" action="/movies" use:enhance>
-        <div class="form-control">
-            <input class="input input-bordered input-md w-100" type="search" name="searchTerms" placeholder="Movies Search"/>
-        </div>
-    </form>
- </div>
+
  <div class="dropdown dropdown-end">
     <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
     <label tabindex="0" class="btn btn-ghost btn-circle avatar m-1" for="icon">

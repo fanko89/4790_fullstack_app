@@ -19,7 +19,7 @@ export async function load() {
     try {
 
        
-        const finnhub_response = await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=AAPL&token=${FINNHUB_APIKEY}&count=1`)
+        const finnhub_response = await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=AAPL&token=${FINNHUB_APIKEY}&count=30`)
         const finnhubData = await finnhub_response.json()
         console.log(finnhubData)
         return finnhubData

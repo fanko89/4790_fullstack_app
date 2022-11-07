@@ -27,7 +27,7 @@
 		<a href="/dashboard" class="btn btn-ghost normal-case text-xl">Dashboard</a>
 		<a href="/aggregator" class="btn btn-ghost normal-case text-xl">Aggregator</a>
 	</div>
-	<div>
+	<!-- <div>
 		<form method="POST" action="/movies?/search" use:enhance>
 			<div class="form-control">
 				<input
@@ -37,7 +37,7 @@
 					placeholder="Movie Search" />
 			</div>
 		</form>
-	</div>
+	</div> -->
 	<div class="dropdown dropdown-end">
 		<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 		<label tabindex="0" class="btn btn-ghost btn-circle avatar m-1" for="userIcon">

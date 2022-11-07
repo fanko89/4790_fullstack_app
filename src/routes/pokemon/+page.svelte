@@ -1,29 +1,39 @@
 <script>
 	import { onMount } from 'svelte'
-	import ImageLoader from '../../lib/components/Image/ImageLoader.svelte'
+	// import Image from '../../lib/components/Image/Image.svelte'
+	// import ImageLoader from '../../lib/components/Image/ImageLoader.svelte'
 
-	let allPokemon = []
+ let allDrinks = []
+	
 
 	onMount(async () => {
-		const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1200`)
-		const pokeData = await response.json()
+		const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a`)
+		const drinkData = await response.json()
+		console.log(drinkData)
+		allDrinks = drinkData.drinks
 
-		allPokemon = pokeData.results.map(pokemon => {
-			pokemon.id = pokemon.url.slice(34, pokemon.url.lastIndexOf('/'))
-			return pokemon
-		})
+		// allDrinks = drinkData.results.map(drink => {
+		// 	drink.id = drink.url.slice(34, drink.url.lastIndexOf('/'))
+		// 	return drink
+		// })
+
 	})
 </script>
 
-<h1 class="text-xl">Pokemon Grid</h1>
+<h1 class="text-xl">Drink Grid</h1>
 
 <div class="w-full grid grid-cols-6 gap-2 p-2">
-	{#each allPokemon as pokemon}
+	{#each allDrinks as drink}
 		<figure>
-			<ImageLoader src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`} alt={pokemon.name}></ImageLoader>
-			<figcaption>{pokemon.name}</figcaption>
+			<!-- -->
+			<img src={`${drink.strDrinkThumb}`} alt={drink.strDrink}/>
+			<figcaption>
+			<h1 class="text-5x1 font-bold ">Drink Name:</h1>
+			<p>{drink.strDrink}</p>
+		</figcaption>
 		</figure>
 	{:else}
 		<p>Loading...</p>
 	{/each}
-</div>
+</div> 
+

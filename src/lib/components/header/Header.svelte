@@ -50,9 +50,9 @@
 		<ul
 			tabindex="0"
 			class="mt-3 p-2 dropdown-content bg-base-100 menu menu-compact shadow rounded-box w-36">
-			{#if $user.firstName}
-			<li>{$user.firstName} {user.lastName}</li>
-		{/if}
+	        {#if $user.firstName }
+        <li>Hello {$user.firstName}!</li>
+    {/if}
 			<li><a>Profile</a></li>
 			<li><a>Settings</a></li>
 			<li>

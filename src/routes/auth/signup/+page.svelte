@@ -1,12 +1,14 @@
 <script>
 	import { enhance } from '$app/forms'
+	import { user } from '$app/stores/user.js'
 
 
 	//making an object for the signup
     const credentials = {
         email: '',
         password: '',
-		name: '',
+		firstName: '',
+		lastName: '',
 		address: ''
     }
 
@@ -16,7 +18,7 @@
 <div class="hero min-h-screen bg-base-400">
 	<div class="hero-content text-center">
 		<div class="card shadow-lg bg-slate-600">
-			<form class="card-body" method="POST" action="?/signup" use:enhance>
+			<form class="card-body" method="POST" action="/auth?/signup" use:enhance>
 				<div class="form-control">
                     <h1 class="text-5xl font-bold m-4 text-white">Sign Up</h1>
                     <label class="label text-white" for="email">Email Address</label>
@@ -40,15 +42,30 @@
 					bind:value={credentials.password}
 					/>
 
-					<label class="label text-white" for="name">Name</label>
+					<label class="label text-white" for="firstName">First Name</label>
                     <input class="input input-bordered input-lg w-96 bg-white" 
-					type="name" 
-					name="name" 
-					placeholder="Your Name" 
+					type="firstName" 
+					name="firstName" 
+					placeholder="Your Frist Name" 
+					minlength="2"
+					maxlength="80"
 					required 
-					autocomplete="name"
+					autocomplete="given-name"
 					bind:value={credentials.name}
 					/>
+
+					<label class="label text-white" for="lastName">Last Name</label>
+                    <input class="input input-bordered input-lg w-96 bg-white" 
+					type="lastName" 
+					name="lastName" 
+					placeholder="Your Last Name" 
+					minlength="2"
+					maxlength="80"
+					required 
+					autocomplete="given-name"
+					bind:value={credentials.name}
+					/>
+
 
 					<label class="label text-white" for="address">Address</label>
                     <input class="input input-bordered input-lg w-96 bg-white" 

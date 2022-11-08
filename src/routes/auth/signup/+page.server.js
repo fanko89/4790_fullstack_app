@@ -1,4 +1,5 @@
 import { invalid, redirect } from '@sveltejs/kit'
+//import store
 
 /** @type {import('./$types').Actions} */
 export const actions = {
@@ -17,5 +18,13 @@ export const actions = {
         
 		throw redirect(303, '/auth/login');
 		
+    }
+    signup:async ({ request }) => {
+        const data= await request.formData()
+        const newUser = {
+            firstName
+            email: data.get('email'),
+        }
+
     }
 }

@@ -19,7 +19,7 @@
 		<div class="card shadow-lg bg-slate-600">
 			<form class="card-body" method="POST" action="?/login" use:enhance>
 				<div class="form-control">
-                    <h1 class="text-5xl font-bold m-4 text-white">Log in</h1>
+                    <h1 class="text-5xl font-bold m-4 text-primary-content">Log in</h1>
                    
                     <label class="label text-white" for="email">Email Address</label>
 					<input

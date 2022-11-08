@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte'
 	import Image from '../../lib/components/Image/Image.svelte'
- import ImageLoader from '../../lib/components/Image/ImageLoader.svelte'
+ //import ImageLoader from '../../lib/components/Image/ImageLoader.svelte'
 
  let allDrinks = []
 	

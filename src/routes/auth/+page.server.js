@@ -17,7 +17,9 @@ export const actions = {
     },
     signup: async ({ request }) => {
         const data = await request.formData()
+        //connect to online later
         throw redirect(307, '/auth/login')
+        
 
     }
 }

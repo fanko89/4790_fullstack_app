@@ -1,6 +1,7 @@
 <script>
 	import { enhance } from "$app/forms"
     import { theme } from '$lib/stores/theme'
+    import { user } from '$lib/stores/user'
 
     let themeOptions = ['light', 'dark', 'cupcake', 'cyberpunk', 'coffee', 'winter']
 	let selectedTheme
@@ -38,6 +39,9 @@ function logout() {
     </label>
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
     <ul tabindex="0" class="mt-3 p-2 dropdown-content bg-base-100 menu menu-compact shadow rounded-box w-36">
+        {#if $user.firstName}
+        <li>{$user.firstName} {user.lastName}</li>
+    {/if}
         <li><a>Profile</a></li>
         <li><a>Settings</a></li>
         <li>

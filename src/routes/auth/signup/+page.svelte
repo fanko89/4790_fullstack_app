@@ -1,16 +1,22 @@
 <script>
 	import { enhance } from '$app/forms'
-	import { user } from '$app/stores/user.js'
+	import { user } from '$lib/stores/user.js'
 
 
 	//making an object for the signup
     const credentials = {
         email: '',
-        password: '',
 		firstName: '',
 		lastName: '',
 		address: ''
     }
+
+	const storeUserDetails = () => {
+		return async ({ update }) => {
+			$user = credentials
+			update()
+		}
+	}
 
 
 </script>
@@ -18,7 +24,7 @@
 <div class="hero min-h-screen bg-base-400">
 	<div class="hero-content text-center">
 		<div class="card shadow-lg bg-slate-600">
-			<form class="card-body" method="POST" action="/auth?/signup" use:enhance>
+			<form class="card-body" method="POST" action="/auth?/signup" use:enhance={storeUserDetails}>
 				<div class="form-control">
                     <h1 class="text-5xl font-bold m-4 text-white">Sign Up</h1>
                     <label class="label text-white" for="email">Email Address</label>
@@ -39,7 +45,6 @@
 					required autocomplete="password" 
 					minlength="8" 
 					maxlength="70" 
-					bind:value={credentials.password}
 					/>
 
 					<label class="label text-white" for="firstName">First Name</label>
@@ -51,7 +56,7 @@
 					maxlength="80"
 					required 
 					autocomplete="given-name"
-					bind:value={credentials.name}
+					bind:value={credentials.firstName}
 					/>
 
 					<label class="label text-white" for="lastName">Last Name</label>
@@ -62,8 +67,8 @@
 					minlength="2"
 					maxlength="80"
 					required 
-					autocomplete="given-name"
-					bind:value={credentials.name}
+					autocomplete="family-name"
+					bind:value={credentials.lastName}
 					/>
 
 

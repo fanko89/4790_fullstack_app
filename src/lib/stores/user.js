@@ -4,7 +4,7 @@ import { browser } from '$app/environment'
 const defaultValue = {
     firstName: '',
     lastName: '',
-    password: '',
+    address: '',
     email: ''
 }
 

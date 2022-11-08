@@ -12,6 +12,7 @@
 <script>
   import { goto } from '$app/navigation'
 
+
   function navigate() {
     goto('/auth/signup')
   }

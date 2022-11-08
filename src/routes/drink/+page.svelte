@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte'
-	// import Image from '../../lib/components/Image/Image.svelte'
-	// import ImageLoader from '../../lib/components/Image/ImageLoader.svelte'
+	import Image from '../../lib/components/Image/Image.svelte'
+ import ImageLoader from '../../lib/components/Image/ImageLoader.svelte'
 
  let allDrinks = []
 	
@@ -12,23 +12,23 @@
 		console.log(drinkData)
 		allDrinks = drinkData.drinks
 
-		// allDrinks = drinkData.results.map(drink => {
-		// 	drink.id = drink.url.slice(34, drink.url.lastIndexOf('/'))
-		// 	return drink
+		
+		//a way to change url from api images (not used in my project but here for reference)
+		// allDrinks = drinkData.drinks.map(drink => {
+		// 			drink.id= drink.url.slice(34, drink.url.lastIndexof('/'))
+		// 			return drink
 		// })
-
 	})
 </script>
 
-<h1 class="text-xl">Drink Grid</h1>
+<h1 class="text-5xl font-bold">Drink Grid</h1>
 
-<div class="w-full grid grid-cols-6 gap-2 p-2">
+<div class="w-full grid grid-cols-4 gap-2 p-2">
 	{#each allDrinks as drink}
 		<figure>
-			<!-- -->
-			<img src={`${drink.strDrinkThumb}`} alt={drink.strDrink}/>
+			<Image src={`${drink.strDrinkThumb}`} alt={drink.strDrink}></Image>
 			<figcaption>
-			<h1 class="text-5x1 font-bold ">Drink Name:</h1>
+			<h1 class=" h-4 text-5x1 font-bold ">Drink Name:</h1>
 			<p>{drink.strDrink}</p>
 		</figcaption>
 		</figure>

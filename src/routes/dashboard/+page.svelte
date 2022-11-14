@@ -16,11 +16,27 @@
  -->
 
 <script>
+//   import { LayerCake, Svg } from 'layercake';
+//   import { scaleBand } from 'd3-scale';
+
+//   import Bar from '../../lib/components/graphs/Bar.svelte';
+//   import AxisX from '../../lib/components/graphs/AxisX.svelte';
+//   import AxisY from '../../lib/components/graphs/AxisY.svelte';
+
+
+
+//   const xKey = 'value';
+//   const yKey = 'year';
+
+//   data.forEach(d => {
+//     d[xKey] = +d[xKey];
+//   });
+
 	import { Line, Doughnut } from 'svelte-chartjs';
 	import 'chart.js/auto';
- 	import { chartData } from '../../lib/components/chartData.js';
-	import { donutData } from '../../lib/components/donutData.js'; 
-	import Stats from '../../lib/components/Stats.svelte';
+ 	import { chartData } from '../../lib/components/graphs/chartData.js';
+	import { donutData } from '../../lib/components/graphs/donutData.js'; 
+	import Stats from '../../lib/components//graphs/Stats.svelte';
 
 
 	export let data;
@@ -79,3 +95,25 @@ function toggleModal() {
 	</div>
 
 </div>
+<!-- <div class="chart-container">
+	<LayerCake
+	  padding={{ top: 0, bottom: 20, left: 35 }}
+	  x={xKey}
+	  y={yKey}
+	  yScale={scaleBand().paddingInner([0.05])}
+	  xDomain={[0, null]}
+	  data={data}
+	>
+	  <Svg>
+		<AxisX
+		  gridlines={true}
+		  baseline={true}
+		  snapTicks={true}
+		/>
+		<AxisY
+		  gridlines={false}
+		/>
+		<Bar/>
+	  </Svg>
+	</LayerCake>
+  </div> -->

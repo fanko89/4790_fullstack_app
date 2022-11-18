@@ -54,13 +54,13 @@ function toggleModal() {
 </script>
 
 <div class="flex flex-wrap justify-center bg-slate-100">
-	<div class="carousel carousel-center p-4 max-h-24 max-w-md m-20 space-x-4 bg-neutral rounded-box">
+	<div class="carousel carousel-center p-4 max-h-22 max-w-md m-20 space-x-2 bg-neutral rounded-box">
 	<!-- 	{#each pics as pic} -->
 			<div class="carousel-item">
 				<div class="modal" class:modal-open={showModal}>
 					<div class="modal-box">
 						<h3 class="font-bold text-lg">Apple stock image</h3>
-						<p class="py-4">
+						<p class="py-6">
 							This is a link to the {data.name} website <a href="{data.weburl}"><br><br>CLICK HERE!</a>
 						</p>
 						<div class="modal-action">
@@ -70,7 +70,7 @@ function toggleModal() {
 					</div>
 					</div>
 					<a href="#" on:click={toggleModal}>
-				<img class="rounded-box" src={data.logo} alt="stock pic" />
+				<img class="rounded-box" src={data.logo} alt="stock markey pic" />
 			</a>
 			</div>
 <!-- 		{/each} -->

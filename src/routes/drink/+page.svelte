@@ -21,14 +21,14 @@
 	})
 </script>
 
-<h1 class="py-6 text-5xl font-bold">Drink Grid</h1>
+<h1 class="py-6 text-5xl font-bold">Mix Drink Grid</h1>
 
 <div class="w-full grid grid-cols-4 gap-2 p-2">
 	{#each allDrinks as drink}
 		<figure>
 			<Image src={`${drink.strDrinkThumb}`} alt={drink.strDrink}></Image>
 			<figcaption>
-			<h1 class=" h-4 text-5x1 font-bold ">Drink Name:</h1>
+			<h1 class=" h-4 text-5x1 font-bold ">Name of drink:</h1>
 			<p>{drink.strDrink}</p>
 			<h1 class=" h-4 text-5x1 font-bold ">Category:</h1>
 			<p>{drink.strCategory}</p>
@@ -38,7 +38,7 @@
 		</figure>
 	
 	{:else}
-		<p>Loading...</p>
+		<p>Loading...Please wait</p>
 	{/each}
 </div> 
 

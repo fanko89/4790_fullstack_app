@@ -32,18 +32,34 @@
 //     d[xKey] = +d[xKey];
 //   });
 
-	import { Line, Doughnut } from 'svelte-chartjs';
-	import 'chart.js/auto';
- 	import { chartData } from '../../lib/components/graphs/chartData.js';
-	import { donutData } from '../../lib/components/graphs/donutData.js'; 
-	import Stats from '../../lib/components//graphs/Stats.svelte';
+	import { Line, Doughnut } from 'svelte-chartjs'
+	import 'chart.js/auto'
+ 	import { chartData } from '../../lib/components/graphs/chartData.js'
+	import { donutData } from '../../lib/components/graphs/donutData.js'
+	import Stats from '../../lib/components//graphs/Stats.svelte'
+	import {tweened} from 'svelte/motion'
+	import { cubicOut} from 'svelte/easing'
 
 
-	export let data;
+	export let data
 	export const prerender = true;
 	// $: console.log(Object.values(data))
-	let pics = Object.values(data);
+	let pics = Object.values(data.recipes[0].image);
+let name= "Health Score"
+	const progress= tweened(data.recipes[0].healthScore
+, {
+		duration: 400,
+		easing: cubicOut
+	})
 
+	let finalProgress= 0
+
+
+const handleClick= async () => {
+	await progress.set(Number.parseInt(data.recipes[0].weightWatcherSmartPoints))
+	name = "Weight Watcher Smart Points"
+	finalProgress =$progress
+}
 	let showModal = false
 
 function toggleModal() {
@@ -83,8 +99,17 @@ function toggleModal() {
 	</div>
 	<!-- Stats element begins here-->
 	<Stats />
+	<div>
+<progress class="progress progress-info ml-3 w-40" value="{$progress}" max="200" on:click={handleClick}></progress><p class="ml-3">{finalProgress}pt<br>{name}</p><br>
+</div>
+
+
+<!-- <div class="radial-progress" style="--value:{$progress};">{$progress}</div>
+<div class="radial-progress" style="--value:{$progressTwo};">{$progressTwo}</div>
+<div class="radial-progress" style="--value:{$progressThree};">{$progressThree}</div> -->
+
 	<!-- Mission statement here -->
-	<div class="card w-full bg-base-200 shadow-xl">
+	<div class="card w-full bg-base-200 shadow-xl m-4">
 		<div class="card-body">
 			<h2 class="card-title">{data.name} Information</h2>
 			<p>
@@ -95,25 +120,3 @@ function toggleModal() {
 	</div>
 
 </div>
-<!-- <div class="chart-container">
-	<LayerCake
-	  padding={{ top: 0, bottom: 20, left: 35 }}
-	  x={xKey}
-	  y={yKey}
-	  yScale={scaleBand().paddingInner([0.05])}
-	  xDomain={[0, null]}
-	  data={data}
-	>
-	  <Svg>
-		<AxisX
-		  gridlines={true}
-		  baseline={true}
-		  snapTicks={true}
-		/>
-		<AxisY
-		  gridlines={false}
-		/>
-		<Bar/>
-	  </Svg>
-	</LayerCake>
-  </div> -->

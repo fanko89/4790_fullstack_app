@@ -15,18 +15,27 @@
 
 
 import { FINNHUB_APIKEY } from '$env/static/private'
+import { ALPHAVANATAGE_APIKEY } from '$env/static/private'
+import { SPOONACULAR_APIKEY } from '$env/static/private'
+
+
 export async function load() { 
     try {
 
        
-        const finnhub_response = await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=AAPL&token=${FINNHUB_APIKEY}&count=30`)
-        const finnhubData = await finnhub_response.json()
-        console.log(finnhubData)
-        return finnhubData
+        // const finnhub_response = await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=AAPL&token=${FINNHUB_APIKEY}&count=30`)
+        // const finnhubData = await finnhub_response.json()
+        // console.log(finnhubData)
+        const spoon_response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${SPOONACULAR_APIKEY}&count=30`)
+        const spoonData = await spoon_response.json()
+        console.log(spoonData)
+        // return finnhubData
+        return spoonData
     } catch (err) {
         console.error(err)
         
     }
+  
 }
 
 

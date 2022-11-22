@@ -1,5 +1,7 @@
 <script>
+
 	import { faker } from '@faker-js/faker'
+	
 
   let showModal = false
 

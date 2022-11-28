@@ -1,18 +1,25 @@
 <script>
 	import { enhance } from '$app/forms'
+	import {user} from '$lib/stores/user.js'
 
 	//making an object for the login
     const credentials = {
         email: '',
         password: ''
     }
+	const checkUserCredentials = () => {
+		return async ({ update}) =>{
+			console.log(JSON.stringify($user))
+			update()
+		}
+	}
 	
 </script>
 
 <div class="hero min-h-screen bg-base-400">
 	<div class="hero-content text-center">
 		<div class="card shadow-lg bg-slate-600">
-			<form class="card-body" method="POST" action="/auth?/login" use:enhance>
+			<form class="card-body" method="POST" action="/auth?/login" use:enhance ={checkUserCredentials}>
 				<div class="form-control">
                     <h1 class="text-5xl font-bold m-4 text-primary-content">Log in</h1>
                    
@@ -34,7 +41,7 @@
 					minlength="8"
 					maxlength="70"
 					bind:value={credentials.password}/>
-                    <button class="btn btn-secondary btn-lg mt-8 text-white" type="submit">Log In</button>
+                   <button class="btn btn-secondary btn-lg mt-8 text-white" type="submit">Log In</button>
 				</div>
 			</form>
 		</div>

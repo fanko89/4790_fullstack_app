@@ -1,6 +1,7 @@
 <script>
 	import { enhance } from '$app/forms'
 	import { user } from '$lib/stores/user.js'
+	import { theme } from "$lib/stores/theme.js"
 
 
 	//making an object for the signup

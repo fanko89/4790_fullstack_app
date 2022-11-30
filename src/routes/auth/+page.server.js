@@ -11,6 +11,15 @@ export const actions = {
         if (!email) { 
             return invalid(400, {email, missing: true})
         }
+        try {
+            const verifidedUser = await Auth.signin(email, password)
+
+        }
+        catch(err) {
+            if(err.code) {
+                return invalid(400, {errorMessage: err.message, invalidLogin: true})
+            }
+        }
         
 		throw redirect(303, '/dashboard');
 		

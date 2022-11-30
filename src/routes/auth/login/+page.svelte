@@ -43,6 +43,7 @@
 					bind:value={credentials.password}/>
                    <button class="btn btn-secondary btn-lg mt-8 text-white" type="submit">Log In</button>
 				</div>
+				<a href="/auth/signup" class="normal-case text-white text-xl mt-8 mb-3">Sign Up</a>
 			</form>
 		</div>
 	</div>

@@ -6,6 +6,7 @@
 	let themeOptions = ['light', 'dark', 'cupcake', 'aqua', 'dracula', 'winter']
 
 	let selectedTheme
+	let localUser = JSON.parse($user)
 
 	$: if (selectedTheme && selectedTheme !== 'Theme') $theme = selectedTheme
 

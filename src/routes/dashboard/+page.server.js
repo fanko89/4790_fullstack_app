@@ -19,6 +19,7 @@ import { ALPHAVANATAGE_APIKEY } from '$env/static/private'
 import { SPOONACULAR_APIKEY } from '$env/static/private'
 
 
+
 export async function load() { 
     try {
 

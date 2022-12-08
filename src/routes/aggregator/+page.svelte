@@ -40,11 +40,19 @@
   </div> -->
 
   <script>
+    import { dataset_dev } from "svelte/internal"
+  
+  
     export let data, errors
     //$: console.log(data.topStories)
     let storyContent = ''
+    let storyPic = ''
     function getStory(story) {
+    
       storyContent = story.content
+      storyPic = story.urlToImage
+      console.log(storyPic)
+    
     }
   </script>
   
@@ -52,10 +60,14 @@
     <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col items-center justify-center">
       <!-- Page content here -->
-      <label for="my-drawer-2" class="btn btn-primary drawer-button">Open drawer</label>
       <div class="flex content-center justify-center w-1/2 ">
+        <img src= "{storyPic}"/> 
+        </div>
+        <div class="flex content-center justify-center w-1/2 ">
         <h4 class="bg-slate-100">{storyContent}</h4>
       </div>
+      <label for="my-drawer-2" class="btn btn-primary drawer-button">Open drawer</label>
+  
     </div>
     <div class="drawer-side ">
       <label for="my-drawer-2" class="drawer-overlay " />
@@ -63,7 +75,7 @@
         <!-- Sidebar content here -->
         {#each data.topStories as story}
           <li class="card" on:click={getStory(story)}>
-            <figure class="flex flex-col bg-yellow-500 m-1">
+            <figure class="flex flex-col bg-gray-100 m-1">
               <img src={story.urlToImage} alt="Story pic"/>
               <figcaption>{story.title}</figcaption>
             </figure>

@@ -3,6 +3,7 @@
 	import { theme } from '$lib/stores/theme'
 	import { user } from '$lib/stores/user'
 	let themeOptions = ['light', 'dark', 'cupcake', 'cyberpunk', 'coffee', 'winter']
+
 	let selectedTheme
 	let localUser = JSON.parse($user)
 	console.log(localUser)
@@ -34,7 +35,17 @@
         <a href="/aggregator" class="btn btn-ghost normal-case text-xl">Aggregator</a>
         <a href="/drink" class="btn btn-ghost normal-case text-xl">Drinks</a>
 	</div>
-
+	<div>
+		<form method="POST" action="/movies?/search" use:enhance>
+			<div class="form-control">
+				<input
+					class="input input-bordered input-lg w-80"
+					type="search"
+					name="searchTerms"
+					placeholder="Movie Search" />
+			</div>
+		</form>
+	</div>
 	<div class="dropdown dropdown-end">
 		<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 		<label tabindex="0" class="btn btn-ghost btn-circle avatar m-1" for="userIcon">

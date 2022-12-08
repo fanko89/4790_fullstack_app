@@ -1,7 +1,7 @@
 <script>
 	import { enhance } from '$app/forms'
 	import { user } from '$lib/stores/user.js'
-	import { theme } from "$lib/stores/theme.js"
+
 
 
 	//making an object for the signup
@@ -14,7 +14,7 @@
 
 	const storeUserDetails = () => {
 		return async ({ update }) => {
-			$user = credentials
+			$user = JSON.stringify(credentials)
 			update()
 		}
 	}

@@ -2,9 +2,8 @@ import { writable } from "svelte/store"
 import { browser } from '$app/environment'
 
 const defaultValue = JSON.stringify({
-    firstName: '',
-    lastName: '',
-    address: '',
+    firstName: 'default',
+    lastName: 'user',
     email: 'user@foo.com'
 })
 

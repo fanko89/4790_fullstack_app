@@ -115,8 +115,9 @@ const addStep = () => {
 						</div>
 					</div>
 					</div>
-					<a href="#" on:click={toggleModal}>
-				<img class="max-w-sm rounded-lg shadow-2xl" src={data.recipes[0].image} alt="meal picture" />
+					<a href="page" on:click={toggleModal}>
+				<!-- svelte-ignore a11y-img-redundant-alt -->
+				<img  src={data.recipes[0].image} class="max-w-sm rounded-lg shadow-2xl" alt="meal picture" />
 			</a>
 			</div>
 		
@@ -146,7 +147,7 @@ const addStep = () => {
 			<div class="stat-figure text-primary">
 				<div class="mb-8">
 					<div class="stat-figure">{name}:</div>
-				  <progress class="progress progress-info w-40" value="{$progress}" max="100" on:click={handleClick}></progress>
+				  <progress class="progress progress-info w-40" value="{$progress}" max="100" on:keypress={handleClick}></progress>
 				  <div class=" stat-value text-secondary">{finalProgress}pt</div>
 			
 				</div>

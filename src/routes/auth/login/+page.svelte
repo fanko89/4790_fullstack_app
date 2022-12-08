@@ -7,7 +7,7 @@
     }
 	const checkUserCredentials = () => {
 		return async ({ update }) => {
-			console.log(JSON.stringify($user))
+			// console.log(JSON.stringify($user))
 			update()
 		}
 	}

@@ -61,7 +61,7 @@
     <div class="drawer-content flex flex-col items-center justify-center">
       <!-- Page content here -->
       <div class="flex content-center justify-center w-1/2 ">
-        <img src= "{storyPic}"/> 
+        <img src= "{storyPic}" alt=""/> 
         </div>
         <div class="flex content-center justify-center w-1/2 ">
         <h4 class="bg-slate-100">{storyContent}</h4>
@@ -74,7 +74,7 @@
       <ul class="menu p-4 w-80 bg-base-100 text-base-content">
         <!-- Sidebar content here -->
         {#each data.topStories as story}
-          <li class="card" on:click={getStory(story)}>
+          <li class="card" on:keypress={getStory(story)}>
             <figure class="flex flex-col bg-gray-100 m-1">
               <img src={story.urlToImage} alt="Story pic"/>
               <figcaption>{story.title}</figcaption>

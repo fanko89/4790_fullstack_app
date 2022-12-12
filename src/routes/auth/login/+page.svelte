@@ -1,24 +1,28 @@
 <script>
+	import { user } from '$lib/stores/user.js'
 	import { enhance } from '$app/forms'
-
-	//making an object for the login
     const credentials = {
         email: '',
         password: ''
     }
-	
+	const checkUserCredentials = () => {
+		return async ({ update }) => {
+			// console.log(JSON.stringify($user))
+			update()
+		}
+	}
 </script>
 
-<div class="hero min-h-screen bg-base-400">
+<div class="hero min-h-screen bg-base-200">
 	<div class="hero-content text-center">
-		<div class="card shadow-lg bg-slate-600">
-			<form class="card-body" method="POST" action="/auth?/login" use:enhance>
+		<div class="card shadow-xl bg-slate-400">
+			<form class="card-body" method="POST" action="/auth?/login" use:enhance={checkUserCredentials}>
 				<div class="form-control">
-                    <h1 class="text-5xl font-bold m-4 text-primary-content">Log in</h1>
-                   
-                    <label class="label text-white" for="email">Email Address</label>
+                    <h1 class="text-4xl font-bold m-4 text-primary-content">Log in</h1>
+                    <h4 class="m-2 text-primary-focus">Sign in to my app</h4>
+                    <label class="label" for="email">Email Address</label>
 					<input
-						class="input input-bordered input-lg w-95 bg-white"
+						class="input input-bordered input-lg w-96"
 						type="email"
 						name="email"
 						placeholder="Email"
@@ -26,16 +30,11 @@
                         autocomplete="email"
                         bind:value={credentials.email}
 					/>
-                    <label class="label text-white" for="password">Password</label>
-                    <input class="input input-bordered input-lg w-96 bg-white"
-					type="password" name="password"
-					placeholder="Password"
-					required autocomplete="password"
-					minlength="8"
-					maxlength="70"
-					bind:value={credentials.password}/>
-                    <button class="btn btn-secondary btn-lg mt-8 text-white" type="submit">Log In</button>
+                    <label class="label" for="password">Password</label>
+                    <input class="input input-bordered input-lg w-96" type="password" name="password" placeholder="Password" required autocomplete="password" minlength="8" maxlength="80" bind:value={credentials.password}/>
+                    <button class="btn btn-primary btn-lg mt-8" type="submit">Log In</button>
 				</div>
+				<a href="/auth/signup" class="normal-case text-white text-xl mt-8 mb-3">Sign Up</a>
 			</form>
 		</div>
 	</div>

@@ -11,7 +11,7 @@
 		const drinkData = await response.json()
 		// console.log(drinkData)
 		allDrinks = drinkData.drinks
-		
+
 		
 		//a way to change url from api images (not used in my project but here for reference)
 		// allDrinks = drinkData.drinks.map(drink => {
@@ -19,19 +19,6 @@
 		// 			return drink
 		// })
 	})
-let ing = "strIngredient"
-let num =0
-	function drinking(array) {
-		
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] === null) {
-      continue;
-    }
-
-	array = array[num]
-	num ++
-  }
-}
 </script>
 
 <h1 class="py-6 text-5xl font-bold">Mix Drink Grid</h1>
@@ -45,7 +32,6 @@ let num =0
 			<p>{drink.strDrink}</p>
 			<h1 class=" h-4 text-5x1 font-bold ">Category:</h1>
 			<p>{drink.strCategory}</p>
-			<!-- <p>{drink.drinking(ing)}</p> -->
 		</figcaption>
 		<br>
 		<br>

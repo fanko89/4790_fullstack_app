@@ -19,7 +19,11 @@
 			<form class="card-body" method="POST" action="/auth?/login" use:enhance={checkUserCredentials}>
 				<div class="form-control">
                     <h1 class="text-4xl font-bold m-4 text-primary-content">Log in</h1>
+<<<<<<< HEAD
                     <h4 class="m-2 text-primary-focus">Sign in to my app</h4>
+=======
+                    <h4 class="m-2 text-primary-focus">Sign in to my demo app</h4>
+>>>>>>> 52c6a6ef979e6b4c157e0074ad7256c8d7d26460
                     <label class="label" for="email">Email Address</label>
 					<input
 						class="input input-bordered input-lg w-96"

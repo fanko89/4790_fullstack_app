@@ -19,6 +19,7 @@ import { ALPHAVANATAGE_APIKEY } from '$env/static/private'
 import { SPOONACULAR_APIKEY } from '$env/static/private'
 
 
+
 export async function load() { 
     try {
 
@@ -28,7 +29,7 @@ export async function load() {
         // console.log(finnhubData)
         const spoon_response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${SPOONACULAR_APIKEY}&count=30`)
         const spoonData = await spoon_response.json()
-        console.log(spoonData)
+        // console.log(spoonData)
         // return finnhubData
         return spoonData
     } catch (err) {

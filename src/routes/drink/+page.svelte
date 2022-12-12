@@ -9,7 +9,7 @@
 	onMount(async () => {
 		const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a`)
 		const drinkData = await response.json()
-		console.log(drinkData)
+		// console.log(drinkData)
 		allDrinks = drinkData.drinks
 
 		

@@ -6,8 +6,8 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write ."
 	},
 	"devDependencies": {
 		"@faker-js/faker": "^7.6.0",
@@ -30,6 +30,7 @@
 		"chart.js": "^3.9.1",
 		"d3-scale": "^4.0.2",
 		"daisyui": "^2.41.0",
+		"express-formidable-v2": "^2.2.1",
 		"finnhub": "^1.2.16",
 		"layercake": "^7.1.0",
 		"sanitize-html": "^2.7.2",

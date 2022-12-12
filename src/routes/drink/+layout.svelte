@@ -1,18 +1,8 @@
 <script>
-	import { enhance } from "$app/forms"
-    import { theme } from '$lib/stores/theme'
-    import { user } from '$lib/stores/user'
-
-    let themeOptions = ['light', 'dark', 'cupcake', 'cyberpunk', 'coffee', 'winter']
-	let selectedTheme
-
-	$: if(selectedTheme && selectedTheme !== 'Theme') $theme = selectedTheme
-
-function logout() {
-    console.log("User logged out")
-}
+	import Header from "../../lib/components/header/Header.svelte";
 </script>
 
+<<<<<<< HEAD
 <header class="navbar bg-base-100">
 	<div data-theme={$theme}></div>
     <div class="flex-1">
@@ -61,11 +51,8 @@ function logout() {
 </header>
 	
 
+=======
+<Header/>
+>>>>>>> 52c6a6ef979e6b4c157e0074ad7256c8d7d26460
 <slot />
-
-
-
-
- 
-
 

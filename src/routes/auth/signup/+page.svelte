@@ -3,6 +3,7 @@
 	import { user } from '$lib/stores/user.js'
 
 
+
 	//making an object for the signup
     const credentials = {
         email: '',
@@ -13,7 +14,7 @@
 
 	const storeUserDetails = () => {
 		return async ({ update }) => {
-			$user = credentials
+			$user = JSON.stringify(credentials)
 			update()
 		}
 	}

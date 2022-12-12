@@ -27,7 +27,7 @@ export async function load() {
         // const finnhub_response = await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=AAPL&token=${FINNHUB_APIKEY}&count=30`)
         // const finnhubData = await finnhub_response.json()
         // console.log(finnhubData)
-        const spoon_response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${SPOONACULAR_APIKEY}&count=30`)
+        const spoon_response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=433e8fc47efd48a29a1a9f301f01d2af&count=30`)
         const spoonData = await spoon_response.json()
         // console.log(spoonData)
         // return finnhubData

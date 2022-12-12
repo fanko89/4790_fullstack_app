@@ -24,7 +24,7 @@
 		</a>
 		<a href="/avatars" class="btn btn-ghost normal-case text-xl">Avatars</a>
 		<a href="/movies" class="btn btn-ghost normal-case text-xl">Movies</a>
-		<a href="/dashboard" class="btn btn-ghost normal-case text-xl">Meals</a>
+		<a href="/dashboard" class="btn btn-ghost normal-case text-xl">Dashboard</a>
 		<a href="/aggregator" class="btn btn-ghost normal-case text-xl">Aggregator</a>
 		<a href="/drink" class="btn btn-ghost normal-case text-xl">Drinks</a>
 	</div>

@@ -38,7 +38,7 @@
 		</figure>
 	
 	{:else}
-		<p>Loading...Please wait</p>
+		<p>Loading....Please wait</p>
 	{/each}
 </div> 
 

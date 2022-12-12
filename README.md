@@ -1,38 +1,56 @@
-# create-svelte
+twetween progress bar to switch between health score to Weight watcher points
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/src/routes/dashboard/+page.svelte#L149
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+transisions in and out with button click on details/description/instruction/ingredients for recipes
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/src/routes/dashboard/+page.svelte#L164
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/src/routes/dashboard/+page.svelte#L165
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/src/routes/dashboard/+page.svelte#L166
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/src/routes/dashboard/+page.svelte#L167
 
-## Creating a project
 
-If you're seeing this, you've probably already done this step. Congrats!
+flip animation on ingredints when populating with button
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/src/routes/dashboard/+page.svelte#L195
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+toggle modal to open when clicking on meal image and has a link to source page for recipe
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/src/routes/dashboard/+page.svelte#L118
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+3 different API 
+OMDB API https://www.omdbapi.com/
+NEWS API https://newsapi.org/
+COCKTAIL API https://www.thecocktaildb.com
+SPOONACULAR APIKEY https://spoonacular.com/food-api
 
-## Developing
+lifecycle functions
+Onmount async fetch data to populate drink page.
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/src/routes/drink/+page.svelte#L10
+Onmount data image 
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/lib/components/Image/Image.svelte#L10
+onMount IntersectionObserver
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/lib/components/Image/IntersectionObserver.svelte#L13
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Data Inputs
+email input
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/routes/auth/signup/+page.svelte#L32
+Last Name input
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/routes/auth/signup/+page.svelte#L63
+First Name input
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/routes/auth/signup/+page.svelte#L51
+password input
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/routes/auth/signup/+page.svelte#L41
 
-```bash
-npm run dev
+array methods
+filter
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/routes/api/movie/+server.js#L45
+map
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/routes/avatars/+page.js#L5
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+user events
+onclick toggle modal
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/lib/components/MovieModal/MovieModal.svelte#L15
+onclick move story to page
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/routes/aggregator/+page.svelte#L30
+onclick hide sections
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/routes/dashboard/+page.svelte#L134
+onclick add step
+https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/routes/dashboard/+page.svelte#L165
 
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

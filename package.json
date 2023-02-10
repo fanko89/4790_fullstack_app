@@ -35,6 +35,7 @@
 		"finnhub": "^1.2.16",
 		"layercake": "^7.1.0",
 		"sanitize-html": "^2.7.2",
-		"svelte-chartjs": "^3.0.1"
+		"svelte-chartjs": "^3.0.1",
+		"svelte-preprocess": "^5.0.1"
 	}
 }

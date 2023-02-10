@@ -1,31 +1,60 @@
 <script>
-	import { enhance } from '$app/forms'
-	import { user } from '$lib/stores/user.js'
-
-
+import { Auth } from 'aws-amplify'
+import { localUser } from '$lib/stores/localUser'
+    import { goto } from '$app/navigation'
+	
 
 	//making an object for the signup
     const credentials = {
         email: '',
 		firstName: '',
 		lastName: '',
-		address: ''
+		address: '',
+		password: ''
     }
 
-	const storeUserDetails = () => {
-		return async ({ update }) => {
-			$user = JSON.stringify(credentials)
-			update()
-		}
+	let formError = {
+        emailTaken: false,
+        invalidPassword: false,
+        errorMessage: ''
+    }
+
+	const handleSubmit = async () => {
+		console.log('About to submit signup data...')
+		try {
+        const { user } = await Auth.signUp({
+            username: credentials.email,
+            password: credentials.password,
+            attributes: {
+                name: credentials.firstName,          // optional
+                family_name: credentials.lastName,   // optional - E.164 number convention
+                email: credentials.email // other custom attributes 
+            },
+            autoSignIn: { // optional - enables auto sign in after user is confirmed
+                enabled: true,
+            }
+        })
+        console.log(user)
+        $localUser = credentials.email
+		// go to verification route on success
+        goto('/auth/verify')
+    } catch (error) {
+        console.log('error signing up:', error)
+        formError.errorMessage = error.message
+        if (error.code === 'UsernameExistsException') {
+            formError.emailTaken = true
+        }
+        if (error.code === 'InvalidPasswordException') {
+            formError.invalidPassword = true
+        }
+    }
 	}
-
-
 </script>
 
 <div class="hero min-h-screen bg-base-400">
 	<div class="hero-content text-center">
 		<div class="card shadow-lg bg-slate-600">
-			<form class="card-body" method="POST" action="/auth?/signup" use:enhance={storeUserDetails}>
+			<form class="card-body"  on:submit|preventDefault={handleSubmit}>
 				<div class="form-control">
                     <h1 class="text-5xl font-bold m-4 text-white">Sign Up</h1>
                     <label class="label text-white" for="email">Email Address</label>
@@ -38,6 +67,7 @@
                         autocomplete="email"
                         bind:value={credentials.email}
 					/>
+					{#if formError.emailTaken}<p class="text-red-800">{formError.errorMessage}</p>{/if}
                     <label class="label text-white" for="password">Password</label>
                     <input class="input input-bordered input-lg w-96 bg-white"
 					type="password" 
@@ -45,8 +75,10 @@
 					placeholder="Password" 
 					required autocomplete="password" 
 					minlength="8" 
-					maxlength="70" 
+					maxlength="70"
+					bind:value={credentials.password} 
 					/>
+					{#if formError.invalidPassword}<p class="text-red-800">{formError.errorMessage}</p>{/if}
 
 					<label class="label text-white" for="firstName">First Name</label>
                     <input class="input input-bordered input-lg w-96 bg-white" 

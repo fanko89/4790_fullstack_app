@@ -2,8 +2,8 @@
     import "../app.css";
     import { theme } from '$lib/stores/theme'
     import { Amplify, Auth } from 'aws-amplify'
-    import awsconfig from '/.aws-exports'
-  Amplify.configure(awsconfig)
+import awsconfig from '../aws-exports'
+Amplify.configure(awsconfig)
   
   </script>
 <div data-theme={$theme}>

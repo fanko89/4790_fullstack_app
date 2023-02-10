@@ -24,7 +24,7 @@
 		"svelte": "^3.44.0",
 		"sveltekit-adapter-aws": "^4.3.8",
 		"tailwindcss": "^3.2.1",
-		"vite": "next"
+		"vite": "^4.0.4"
 	},
 	"type": "module",
 	"dependencies": {
@@ -35,9 +35,7 @@
 		"express-formidable-v2": "^2.2.1",
 		"finnhub": "^1.2.16",
 		"formidable": "^2.1.1",
-		"layercake": "^7.1.0",
 		"sanitize-html": "^2.7.2",
-		"superagent": "^7.0.2",
 		"svelte-chartjs": "^3.0.1",
 		"svelte-preprocess": "^5.0.1"
 	}

@@ -8,11 +8,11 @@
 <!-- <script>
 	import { enhance } from '$app/forms'
 	import { theme } from '$lib/stores/theme'
-	import { user } from '$lib/stores/user'
+	import { user } from '$lib/stores/localUser'
 	let themeOptions = ['light', 'dark', 'cupcake', 'cyberpunk', 'coffee', 'winter']
 
 	let selectedTheme
-	let localUser = JSON.parse($user)
+	let user = JSON.parse($localUser)
 	console.log(localUser)
 	$: if (selectedTheme && selectedTheme !== 'Theme') $theme = selectedTheme
 	function logout() {

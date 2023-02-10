@@ -1,15 +1,27 @@
 <script>
 	import { enhance } from '$app/forms'
 	import { theme } from '$lib/stores/theme'
-	import { user } from '$lib/stores/user'
+	import { Auth } from 'aws-amplify'
+	import { goto } from '$app/navigation'
 	let themeOptions = ['light', 'dark', 'cupcake', 'cyberpunk', 'coffee', 'winter']
 
 	let selectedTheme
-	let localUser = JSON.parse($user)
-	console.log(localUser)
+	// let localUser = JSON.parse($user)
+	// console.log(localUser)
+
 	$: if (selectedTheme && selectedTheme !== 'Theme') $theme = selectedTheme
-	function logout() {
-		console.log(`Logging out user: ${localUser.firstName} ${localUser.lastName}`)
+	let localUser
+	console.log('About to try and authenticate user...')
+	Auth.currentAuthenticatedUser()
+		.then((user) => (localUser = user))
+		.catch((err) => console.log('Checking for user... ', err))
+	async function logout() {
+		try {
+			await Auth.signOut()
+			goto('/')
+		} catch (error) {
+			console.log('error signing out: ', error)
+		}
 	}
 </script>
 
@@ -55,7 +67,7 @@
 					{/each}
 				</select>
 			</li>
-			<li><a href="none" on:keypress={logout}>Logout</a></li>
+			<li><a on:click={logout}>Logout</a></li>
 		</ul>
 	</div>
 </header>

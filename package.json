@@ -33,6 +33,7 @@
 		"daisyui": "^2.50.0",
 		"express-formidable-v2": "^2.2.1",
 		"finnhub": "^1.2.16",
+		"formidable": "^3.2.5",
 		"layercake": "^7.1.0",
 		"sanitize-html": "^2.7.2",
 		"svelte-chartjs": "^3.0.1",

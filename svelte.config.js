@@ -7,6 +7,9 @@ const config = {
 	kit: {
 		adapter: adapter({
 			autoDeploy: true,
+			FQDN: 'https://main.d3nseqw8ub68d6.amplifyapp.com/',
+			stackName:'470-backend'
+
 		})
 
 	}

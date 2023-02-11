@@ -37,7 +37,7 @@
 					/>
                     <label class="label" for="password">Password</label>
                     <input class="input input-bordered input-lg w-96" type="password" name="password" placeholder="Password" required autocomplete="password" minlength="8" maxlength="80" bind:value={credentials.password}/>
-                    <button class="btn btn-primary btn-lg mt-8" type="submit">Log In</button>
+                    <button class="btn btn-primary btn-lg m-8" type="submit">Log In</button>
 				</div>
 				<a href="/auth/signup" class="normal-case text-white text-xl mt-8 mb-3">Sign Up</a>
 			</form>

@@ -28,7 +28,8 @@ import { localUser } from '$lib/stores/localUser'
             attributes: {
                 name: credentials.firstName,          // optional
                 family_name: credentials.lastName,   // optional - E.164 number convention
-                email: credentials.email // other custom attributes 
+                email: credentials.email, // other custom attributes 
+				address: credentials.address
             },
             autoSignIn: { // optional - enables auto sign in after user is confirmed
                 enabled: true,

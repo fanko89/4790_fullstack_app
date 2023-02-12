@@ -1,6 +1,6 @@
 <script>
 import { Auth } from 'aws-amplify'
-import { user } from '$lib/stores/localUser'
+import { localUser } from '$lib/stores/localUser'
     import { goto } from '$app/navigation'
 	
 

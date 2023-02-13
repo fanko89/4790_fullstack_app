@@ -5,9 +5,9 @@ const config = {
 	plugins: [sveltekit()],
 	resolve: {
 		alias: {
-			'./runtimeConfig': './runtimeConfig.brower'
-		}
-	}
+		  "./runtimeConfig": "./runtimeConfig.browser"
+	  }
+  }
 };
 
 export default config;

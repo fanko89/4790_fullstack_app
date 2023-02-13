@@ -17,7 +17,7 @@
 	
 	
 		export let data
-		export const prerender = true;
+		// export const prerender = true;
 		// $: console.log(Object.values(data))
 		let pics = Object.values(data.recipes[0].image);
 	let name= "Health Score"

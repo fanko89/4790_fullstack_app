@@ -35,11 +35,8 @@
 		"chart.js": "^3.9.1",
 		"d3-scale": "^4.0.2",
 		"daisyui": "^2.50.0",
-		"express-formidable-v2": "^2.2.1",
 		"finnhub": "^1.2.16",
-		"formidable": "^3.2.5",
 		"sanitize-html": "^2.7.2",
-		"superagent": "^8.0.9",
 		"svelte-chartjs": "^3.0.1",
 		"svelte-preprocess": "^5.0.1"
 	}

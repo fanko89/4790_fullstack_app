@@ -1,11 +1,11 @@
 <script>
 
 	import sanitizeHtml from "sanitize-html" //changing html to text
-		import { Line, Doughnut } from 'svelte-chartjs'
+		// import { Line, Doughnut } from 'svelte-chartjs'
 		import 'chart.js/auto'
-		 import { chartData } from '../../lib/components/graphs/chartData.js'
-		import { donutData } from '../../lib/components/graphs/donutData.js'
-		import Stats from '../../lib/components//graphs/Stats.svelte'
+		//  import { chartData } from '../../lib/components/graphs/chartData.js'
+		// import { donutData } from '../../lib/components/graphs/donutData.js'
+		// import Stats from '../../lib/components//graphs/Stats.svelte'
 		import {tweened} from 'svelte/motion'
 		import { cubicOut} from 'svelte/easing'
 		import {fly} from 'svelte/transition'
@@ -17,7 +17,6 @@
 	
 	
 		export let data
-		// export const prerender = true;
 		// $: console.log(Object.values(data))
 		let pics = Object.values(data.recipes[0].image);
 	let name= "Health Score"

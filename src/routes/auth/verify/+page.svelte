@@ -13,7 +13,7 @@
 				console.log('error confirming sign up', error)
 			}
 		} else {
-			console.error('No email found for local user')
+			console.error('No email found')
 		}
 	}
 </script>

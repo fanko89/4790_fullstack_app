@@ -52,8 +52,8 @@
 		<ul
 			tabindex="0"
 			class="mt-3 p-2 dropdown-content bg-base-100 menu menu-compact shadow rounded-box w-36">
-			<!-- {#if localUser.firstName}
-				<li>Welcome {localUser.firstName}!</li>
+			<!-- {#if localUser.attributes.name}
+				<li>Welcome {localUser.attributes.name}!</li>
 			{/if} -->
 			<li><a href="none">Profile</a></li>
 			<li><a href="none">Settings</a></li>

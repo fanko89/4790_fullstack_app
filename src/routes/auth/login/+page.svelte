@@ -6,6 +6,10 @@
         email: '',
         password: ''
     }
+	// let formError = {
+	// 	wrongPass: false,
+	// 	errorMessage: ''
+	// }
 	const handleSubmit = async () => {
 		try {
 			const user = await Auth.signIn(credentials.email, credentials.password)
@@ -13,6 +17,10 @@
 			goto('/dashboard')
 		} catch (err) {
 			console.log(err)
+			formError.errorMessage = error.message
+        // if (error.code === 'UsernameExistsException') {
+        //     formError.wrongPass = true
+        // }
 		}
 	}
 </script>
@@ -35,6 +43,7 @@
                         autocomplete="email"
                         bind:value={credentials.email}
 					/>
+					<!-- {#if formError.wrongPass}<p class="text-red-800"></p>{/if} -->
                     <label class="label" for="password">Password</label>
                     <input class="input input-bordered input-lg w-96" type="password" name="password" placeholder="Password" required autocomplete="password" minlength="8" maxlength="80" bind:value={credentials.password}/>
                     <button class="btn btn-primary btn-lg m-8" type="submit">Log In</button>

@@ -8,7 +8,6 @@ const config = {
 			'./runtimeConfig': './runtimeConfig.brower'
 		}
 	}
-	build: {sourcemap: true}
 };
 
 export default config;

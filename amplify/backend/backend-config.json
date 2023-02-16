@@ -1,4 +1,24 @@
 {
+  "api": {
+    "4790backend": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDate": "2023-09-03T22:12:14.480Z",
+              "apiKeyExpirationDays": 200,
+              "description": "4790-graphql-apikey"
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
   "auth": {
     "4790backend": {
       "customAuth": false,

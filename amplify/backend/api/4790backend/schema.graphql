@@ -11,8 +11,15 @@ type Blog @model {
 type Post @model {
   id: ID!
   title: String!
-  blog: Blog @belongsTo
+  status: PostStatus!
+  rating: Int
+  content: String
   comments: [Comment] @hasMany
+}
+
+enum PostStatus {
+  ACTIVE
+  INACTIVE
 }
 
 type Comment @model {

@@ -14,7 +14,7 @@
 
 
   function navigate() {
-    goto('/auth/login')
+    goto('/src/routes/auth/login')
   }
 </script>
 

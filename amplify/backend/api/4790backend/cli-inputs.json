@@ -5,14 +5,26 @@
     "serviceName": "AppSync",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "expirationTime": 200,
-      "apiKeyExpirationDate": "2023-09-03T22:12:14.480Z",
-      "keyDescription": "4790-graphql-apikey"
+      "keyDescription": "api key description",
+      "expirationTime": 30
     },
     "conflictResolution": {
       "defaultResolutionStrategy": {
         "type": "AUTOMERGE"
+      },
+      "perModelResolutionStrategy": [
+        {
+          "resolutionStrategy": {
+            "type": "AUTOMERGE"
+          },
+          "entityName": "Post"
+        }
+      ]
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "AWS_IAM"
       }
-    }
+    ]
   }
 }

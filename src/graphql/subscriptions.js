@@ -10,6 +10,9 @@ export const onCreateBlog = /* GraphQL */ `
         items {
           id
           title
+          status
+          rating
+          content
           createdAt
           updatedAt
           _version
@@ -37,6 +40,9 @@ export const onUpdateBlog = /* GraphQL */ `
         items {
           id
           title
+          status
+          rating
+          content
           createdAt
           updatedAt
           _version
@@ -64,6 +70,9 @@ export const onDeleteBlog = /* GraphQL */ `
         items {
           id
           title
+          status
+          rating
+          content
           createdAt
           updatedAt
           _version
@@ -87,19 +96,9 @@ export const onCreatePost = /* GraphQL */ `
     onCreatePost(filter: $filter) {
       id
       title
-      blog {
-        id
-        name
-        posts {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
+      status
+      rating
+      content
       comments {
         items {
           id
@@ -128,19 +127,9 @@ export const onUpdatePost = /* GraphQL */ `
     onUpdatePost(filter: $filter) {
       id
       title
-      blog {
-        id
-        name
-        posts {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
+      status
+      rating
+      content
       comments {
         items {
           id
@@ -169,19 +158,9 @@ export const onDeletePost = /* GraphQL */ `
     onDeletePost(filter: $filter) {
       id
       title
-      blog {
-        id
-        name
-        posts {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
+      status
+      rating
+      content
       comments {
         items {
           id
@@ -212,15 +191,9 @@ export const onCreateComment = /* GraphQL */ `
       post {
         id
         title
-        blog {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
+        status
+        rating
+        content
         comments {
           nextToken
           startedAt
@@ -249,15 +222,9 @@ export const onUpdateComment = /* GraphQL */ `
       post {
         id
         title
-        blog {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
+        status
+        rating
+        content
         comments {
           nextToken
           startedAt
@@ -286,15 +253,9 @@ export const onDeleteComment = /* GraphQL */ `
       post {
         id
         title
-        blog {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
+        status
+        rating
+        content
         comments {
           nextToken
           startedAt

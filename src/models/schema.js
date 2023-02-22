@@ -76,20 +76,28 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "blog": {
-                    "name": "blog",
+                "status": {
+                    "name": "status",
                     "isArray": false,
                     "type": {
-                        "model": "Blog"
+                        "enum": "PostStatus"
                     },
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "rating": {
+                    "name": "rating",
+                    "isArray": false,
+                    "type": "Int",
                     "isRequired": false,
-                    "attributes": [],
-                    "association": {
-                        "connectionType": "BELONGS_TO",
-                        "targetNames": [
-                            "blogPostsId"
-                        ]
-                    }
+                    "attributes": []
+                },
+                "content": {
+                    "name": "content",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
                 },
                 "comments": {
                     "name": "comments",
@@ -137,6 +145,15 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "gsi-Blog.posts",
+                        "fields": [
+                            "blogPostsId"
+                        ]
+                    }
                 }
             ]
         },
@@ -206,8 +223,16 @@ export const schema = {
             ]
         }
     },
-    "enums": {},
+    "enums": {
+        "PostStatus": {
+            "name": "PostStatus",
+            "values": [
+                "ACTIVE",
+                "INACTIVE"
+            ]
+        }
+    },
     "nonModels": {},
     "codegenVersion": "3.3.5",
-    "version": "920118e6cbedacf9fdf58bb983d59a94"
+    "version": "9bb6969a927b3dbc5a06aa0b0e6bca34"
 };

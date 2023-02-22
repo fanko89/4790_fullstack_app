@@ -13,6 +13,9 @@ export const createBlog = /* GraphQL */ `
         items {
           id
           title
+          status
+          rating
+          content
           createdAt
           updatedAt
           _version
@@ -43,6 +46,9 @@ export const updateBlog = /* GraphQL */ `
         items {
           id
           title
+          status
+          rating
+          content
           createdAt
           updatedAt
           _version
@@ -73,6 +79,9 @@ export const deleteBlog = /* GraphQL */ `
         items {
           id
           title
+          status
+          rating
+          content
           createdAt
           updatedAt
           _version
@@ -99,19 +108,9 @@ export const createPost = /* GraphQL */ `
     createPost(input: $input, condition: $condition) {
       id
       title
-      blog {
-        id
-        name
-        posts {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
+      status
+      rating
+      content
       comments {
         items {
           id
@@ -143,19 +142,9 @@ export const updatePost = /* GraphQL */ `
     updatePost(input: $input, condition: $condition) {
       id
       title
-      blog {
-        id
-        name
-        posts {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
+      status
+      rating
+      content
       comments {
         items {
           id
@@ -187,19 +176,9 @@ export const deletePost = /* GraphQL */ `
     deletePost(input: $input, condition: $condition) {
       id
       title
-      blog {
-        id
-        name
-        posts {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
+      status
+      rating
+      content
       comments {
         items {
           id
@@ -233,15 +212,9 @@ export const createComment = /* GraphQL */ `
       post {
         id
         title
-        blog {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
+        status
+        rating
+        content
         comments {
           nextToken
           startedAt
@@ -273,15 +246,9 @@ export const updateComment = /* GraphQL */ `
       post {
         id
         title
-        blog {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
+        status
+        rating
+        content
         comments {
           nextToken
           startedAt
@@ -313,15 +280,9 @@ export const deleteComment = /* GraphQL */ `
       post {
         id
         title
-        blog {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
+        status
+        rating
+        content
         comments {
           nextToken
           startedAt

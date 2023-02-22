@@ -2,7 +2,10 @@ import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-
 // @ts-ignore
 import { LazyLoading, LazyLoadingDisabled, AsyncCollection, AsyncItem } from "@aws-amplify/datastore";
 
-
+export enum PostStatus {
+  ACTIVE = "ACTIVE",
+  INACTIVE = "INACTIVE"
+}
 
 
 
@@ -43,7 +46,9 @@ type EagerPost = {
   };
   readonly id: string;
   readonly title: string;
-  readonly blog?: Blog | null;
+  readonly status: PostStatus | keyof typeof PostStatus;
+  readonly rating?: number | null;
+  readonly content?: string | null;
   readonly comments?: (Comment | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -57,7 +62,9 @@ type LazyPost = {
   };
   readonly id: string;
   readonly title: string;
-  readonly blog: AsyncItem<Blog | undefined>;
+  readonly status: PostStatus | keyof typeof PostStatus;
+  readonly rating?: number | null;
+  readonly content?: string | null;
   readonly comments: AsyncCollection<Comment>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;

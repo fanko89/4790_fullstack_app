@@ -10,6 +10,9 @@ export const getBlog = /* GraphQL */ `
         items {
           id
           title
+          status
+          rating
+          content
           createdAt
           updatedAt
           _version
@@ -89,19 +92,9 @@ export const getPost = /* GraphQL */ `
     getPost(id: $id) {
       id
       title
-      blog {
-        id
-        name
-        posts {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
+      status
+      rating
+      content
       comments {
         items {
           id
@@ -135,15 +128,9 @@ export const listPosts = /* GraphQL */ `
       items {
         id
         title
-        blog {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
+        status
+        rating
+        content
         comments {
           nextToken
           startedAt
@@ -176,15 +163,9 @@ export const syncPosts = /* GraphQL */ `
       items {
         id
         title
-        blog {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
+        status
+        rating
+        content
         comments {
           nextToken
           startedAt
@@ -208,15 +189,9 @@ export const getComment = /* GraphQL */ `
       post {
         id
         title
-        blog {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
+        status
+        rating
+        content
         comments {
           nextToken
           startedAt
@@ -250,6 +225,9 @@ export const listComments = /* GraphQL */ `
         post {
           id
           title
+          status
+          rating
+          content
           createdAt
           updatedAt
           _version
@@ -288,6 +266,9 @@ export const syncComments = /* GraphQL */ `
         post {
           id
           title
+          status
+          rating
+          content
           createdAt
           updatedAt
           _version

@@ -5,9 +5,9 @@ import { Post, PostStatus } from '../../models'
 const createPost = async () => {
     await DataStore.save(
         new Post({
-            title: 'My First Post',
+            title: 'My First Post - feb 12',
             rating: 10,
-            status: PostStatus.INACTIVE
+            status: PostStatus.ACTIVE
         })
     )
 }

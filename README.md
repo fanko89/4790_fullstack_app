@@ -6,9 +6,10 @@ npm.cmd run-script start - to start
 [4790 FullStack App](https://4790-full-stack-app.vercel.app/) But only when using the Vercel CLI to push to production!  Had to install node-fetch, isomorphic-unfetch, and aws-crt and then deploy using 
 ```bash
 npx vercel --prod
+nxp vercel build -prod
 ```
 
-
+### ***Login page that gets client data from aws amplify ***
 
 ### ***twetween progress bar to switch between health score to Weight watcher points***
 

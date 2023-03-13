@@ -19,10 +19,10 @@
 			goto('/dashboard')
 		} catch (err) {
 			console.log(err)
-			formError.errorMessage = error.message
-        // if (error.code === 'UsernameExistsException') {
-        //     formError.wrongPass = true
-        // }
+			formError.errorMessage = errorObj.message
+        if (errorObj.code === 'UsernameExistsException') {
+            formError.wrongPass = true
+        }
 		}
 	}
 </script>

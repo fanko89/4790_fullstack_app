@@ -7,7 +7,7 @@ let fruits = []
   
 	onMount(async () => {
 	  if (!data)  return
-	  const response = await fetch('http://www.fruityvice.com/api/fruit')
+	  const response = await fetch('http://www.fruityvice.com/api/fruit/:nutrition?min=0&max=1000')
 	  let fruitObject = await response.json()
 		console.log(fruitObject)
 		fruits = fruitObject.data
@@ -42,7 +42,9 @@ let fruits = []
   
 
 
-<!-- <script>
+<!-- 
+	//OAUTH SETUP EXAMPLE
+	<script>
 	import { onMount } from 'svelte'
 	import { DataStore, Predicates } from 'aws-amplify'
 	import { Skill } from '../../models'

@@ -1,7 +1,7 @@
 export async function load() { 
     try {
 
-        const fruit_response = await fetch(`http://www.fruityvice.com/api/fruit/all&count=20`)
+        const fruit_response = await fetch(`http://www.fruityvice.com/api/fruit/genus/:genus`)
         const fruitData = await fruit_response.json()
         return {
             body: fruitData
@@ -59,6 +59,12 @@ export async function load() {
 // }
 
 
+
+
+
+
+// // OAUTH SETUP EXAMPLE
+
 // import { SKILLS_CLIENT, SKILLS_SECRET } from '$env/static/private'
 
 // let lightcastToken = null
@@ -104,5 +110,3 @@ export async function load() {
 //     } catch (error) {
 //         console.log(error)
 //     }
-
-// }

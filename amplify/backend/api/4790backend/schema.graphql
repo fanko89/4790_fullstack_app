@@ -27,4 +27,4 @@ type Comment @model {
   post: Post @belongsTo
   content: String!
 }
-  
+   

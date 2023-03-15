@@ -1,14 +1,15 @@
-import { Post } from "src/models"
-export async function load({ params }) {
-    try {
-        const posts = await DataStore.query(post)
-    
-    return  {
-        posts
+import { DataStore } from "aws-amplify"
+import { Post } from "../../models"
+import { Amplify } from "aws-amplify"
+import awsconfig from "../../aws-exports"
 
-        }
-    }
-    catch (err) {
-        console.log(err)
+Amplify.configure(awsconfig)
+
+export async function load() {
+    try {
+        const posts = await DataStore.query(Post)
+        return { allPosts: posts }
+    } catch (err) {
+        console.error(err)
     }
 }

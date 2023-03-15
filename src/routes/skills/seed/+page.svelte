@@ -1,3 +1,47 @@
+<script>
+	import { onMount } from 'svelte'
+
+
+export let data
+let fruits = []
+  
+	onMount(async () => {
+	  if (!data)  return
+	  const response = await fetch('http://www.fruityvice.com/api/fruit')
+	  let fruitObject = await response.json()
+		console.log(fruitObject)
+		fruits = fruitObject.data
+	//   else {
+	// 	const { props } = await load({ page: 'index' });
+	// 	fruits = props.body;
+	//   }
+	});
+  </script>
+  
+  <table class="table w-full overflow-y-auto">
+	<thead>
+	  <tr>
+		<th class="text-left">Fruit</th>
+		<th class="text-left">id</th>
+		<th class="text-left">family</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  {#each fruits as fruit}
+	  <tr>
+		<td>{fruit.name}</td>
+		<td>{fruit.id}</td>
+		<td>{fruit.family}</td>
+	  </tr>
+	  {/each}
+	</tbody>
+  </table>
+
+  
+  
+  
+
+
 <!-- <script>
 	import { onMount } from 'svelte'
 	import { DataStore, Predicates } from 'aws-amplify'

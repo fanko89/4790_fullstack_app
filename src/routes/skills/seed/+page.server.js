@@ -1,4 +1,62 @@
+export async function load() { 
+    try {
 
+        const fruit_response = await fetch(`http://www.fruityvice.com/api/fruit/all&count=20`)
+        const fruitData = await fruit_response.json()
+        return {
+            body: fruitData
+          }
+        }
+        catch (err) {
+        console.error(err)
+        
+    }
+  
+}
+
+	
+
+// onMount(async () => {
+//     const response = await fetch(`https://www.fruityvice.com/api/fruit/all&count=20`)
+//     const fruitData = await response.json()
+//     console.log(fruitData)
+//     allFruit = fruitData.all
+
+    
+    //a way to change url from api images (not used in my project but here for reference)
+    // allDrinks = drinkData.drinks.map(drink => {
+    // 			drink.id= drink.url.slice(34, drink.url.lastIndexof('/'))
+    // 			return drink
+    // })
+
+
+// export async function load({ fetch }) {
+//   const response = await fetch('https://www.fruityvice.com/api/fruit/all');
+//   if (!response.ok) {
+//     throw new Error('Error retrieving fruits data');
+//   }
+//   const { data } = await response.json();
+//   const fruits = data.slice(0, 100);
+//   return {
+//     props: { fruits }
+//   };
+
+//     try {
+//         const response = await fetch('https://www.fruityvice.com/api/fruit/all', {
+//             method: 'POST',
+//             body: params
+//         })
+//         const data = await response.json()
+//         console.log(data)
+//         lightcastToken = data
+//         return data
+//     } catch (error) {
+//         console.log(error)
+//     }
+
+// }
+
+// }
 
 
 // import { SKILLS_CLIENT, SKILLS_SECRET } from '$env/static/private'

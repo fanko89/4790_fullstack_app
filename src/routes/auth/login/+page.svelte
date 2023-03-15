@@ -1,4 +1,4 @@
-
+<!-- 
 <script>
 	import { goto } from '$app/navigation'
 	import { Auth } from 'aws-amplify'
@@ -45,7 +45,7 @@
                         autocomplete="email"
                         bind:value={credentials.email}
 					/>
-					<!-- {#if formError.wrongPass}<p class="text-red-800"></p>{/if} -->
+					//{#if formError.wrongPass}<p class="text-red-800"></p>{/if}
                     <label class="label" for="password">Password</label>
                     <input class="input input-bordered input-lg w-96" type="password" name="password" placeholder="Password" required autocomplete="password" minlength="8" maxlength="80" bind:value={credentials.password}/>
                     <button class="btn btn-primary btn-lg m-8" type="submit">Log In</button>
@@ -54,4 +54,4 @@
 			</form>
 		</div>
 	</div>
-</div>
+</div> -->

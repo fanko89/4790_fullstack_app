@@ -3,7 +3,7 @@ npm.cmd run-script build - to build
 npm.cmd run-script start - to start
 
 ## Vercel hosting 
-[4790 FullStack App](https://4790-fullstack-app-fanko89.vercel.app//) But only when using the Vercel CLI to push to production!  Had to install node-fetch, isomorphic-unfetch, and aws-crt and then deploy using 
+[4790 FullStack App](https://4790-fullstack-app.vercel.app) But only when using the Vercel CLI to push to production!  Had to install node-fetch, isomorphic-unfetch, and aws-crt and then deploy using 
 ```bash
 npx vercel --prod
 npx vercel build -prod

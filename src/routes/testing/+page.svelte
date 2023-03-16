@@ -1,6 +1,6 @@
-<script>
+<!-- <script>
 import { DataStore, Predicates } from 'aws-amplify'
-import { Post, PostStatus } from '../../models'
+import { Post, PostStatus } from '../../../models'
 export let data
 let search = ''
 const allPosts = data.allPosts
@@ -46,4 +46,4 @@ const deletePosts = async () => {
             {/each}
         </tbody>
     </table>
-</div>
+</div> -->

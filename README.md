@@ -2,14 +2,24 @@
 npm.cmd run-script build - to build 
 npm.cmd run-script start - to start
 
-## Vercel hosting is working
-[4790 FullStack App](https://4790-full-stack-app.vercel.app/) But only when using the Vercel CLI to push to production!  Had to install node-fetch, isomorphic-unfetch, and aws-crt and then deploy using 
+## Vercel hosting 
+[4790 FullStack App](https://4790-fullstack-app-fanko89.vercel.app//) But only when using the Vercel CLI to push to production!  Had to install node-fetch, isomorphic-unfetch, and aws-crt and then deploy using 
 ```bash
 npx vercel --prod
-nxp vercel build -prod
+npx vercel build -prod
 ```
 
+### ***Page creates data stored in an AWS DataStore using a GraphQL API ***
+
+[poplulates data into a table and gives the user the option to select an item to add to the datastore and delete items off the datastore ](https://vscode.dev/github/fanko89/4790_fullstack_app/src/routes/skills/seed/+page.svelte#L1)
+
 ### ***Login page that gets client data from aws amplify ***
+
+[Lets users login](https://vscode.dev/github/fanko89/4790_fullstack_app/src/routes/auth/login/+page.svelte#L1)
+
+### ***signup page that gets client data from aws amplify ***
+
+[Lets users create a new account and verifies their email address by sending a code that they need to submit before creating login](https://vscode.dev/github/fanko89/4790_fullstack_app/src/routes/auth/signup/+page.svelte#L1)
 
 ### ***twetween progress bar to switch between health score to Weight watcher points***
 

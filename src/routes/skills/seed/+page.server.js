@@ -1,61 +1,35 @@
-export async function load() { 
-    try {
 
-        const fruit_response = await fetch(`http://www.fruityvice.com/api/fruit/genus/:genus`)
-        const fruitData = await fruit_response.json()
-        return {
-            body: fruitData
-          }
-        }
-        catch (err) {
-        console.error(err)
-        
-    }
-  
-}
+// export async function load() {
+//   try {
+//     const response = await fetch('https://world.openfoodfacts.org/brands.json', {
+//       headers: {
+//         'Content-Type': 'application/json'
+//       }
+//     });
 
-	
+//     const data = await response.json();
+//     const products = [{ id: data.code, name: data.name, url: data.url }];
 
-// onMount(async () => {
-//     const response = await fetch(`https://www.fruityvice.com/api/fruit/all&count=20`)
-//     const fruitData = await response.json()
-//     console.log(fruitData)
-//     allFruit = fruitData.all
+//     const savedProducts = await DataStore.query(Product);
+//     await Promise.all(products.map(async (product) => {
+//       const existingProduct = savedProducts.find(p => p.id === product.id);
+//       if (!existingProduct) {
+//         await DataStore.save(new Product(product));
+//       }
+//     }));
 
-    
-    //a way to change url from api images (not used in my project but here for reference)
-    // allDrinks = drinkData.drinks.map(drink => {
-    // 			drink.id= drink.url.slice(34, drink.url.lastIndexof('/'))
-    // 			return drink
-    // })
+//     const newProducts = await DataStore.query(Product);
 
-
-// export async function load({ fetch }) {
-//   const response = await fetch('https://www.fruityvice.com/api/fruit/all');
-//   if (!response.ok) {
-//     throw new Error('Error retrieving fruits data');
+//     return {
+//       props: {
+//         products: newProducts,
+//         Product
+//       }
+//     };
+//   } catch (error) {
+//     console.log(error);
+//     return { status: 500 };
 //   }
-//   const { data } = await response.json();
-//   const fruits = data.slice(0, 100);
-//   return {
-//     props: { fruits }
-//   };
-
-//     try {
-//         const response = await fetch('https://www.fruityvice.com/api/fruit/all', {
-//             method: 'POST',
-//             body: params
-//         })
-//         const data = await response.json()
-//         console.log(data)
-//         lightcastToken = data
-//         return data
-//     } catch (error) {
-//         console.log(error)
-//     }
-
-// }
-
 // }
 
 
@@ -63,7 +37,8 @@ export async function load() {
 
 
 
-// // OAUTH SETUP EXAMPLE
+
+// // // OAUTH SETUP EXAMPLE
 
 // import { SKILLS_CLIENT, SKILLS_SECRET } from '$env/static/private'
 

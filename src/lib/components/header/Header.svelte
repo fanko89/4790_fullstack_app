@@ -39,6 +39,7 @@
         <a href="/dashboard" class="btn btn-ghost normal-case text-xl">Meals</a>
         <a href="/aggregator" class="btn btn-ghost normal-case text-xl">Aggregator</a>
         <a href="/drink" class="btn btn-ghost normal-case text-xl">Drinks</a>
+		<a href="/skills/seed" class="btn btn-ghost normal-case text-xl">GraphQL API</a>
 	</div>
 	
 	<div class="dropdown dropdown-end">

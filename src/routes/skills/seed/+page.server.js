@@ -1,7 +1,7 @@
 
 // export async function load() {
 //   try {
-//     const response = await fetch('https://world.openfoodfacts.org/brands.json', {
+//     const response = await fetch('https://world.openfoodfacts.org/api/v2/search?code=3263859883713,8437011606013,6111069000451&fields=code,product_name', {
 //       headers: {
 //         'Content-Type': 'application/json'
 //       }

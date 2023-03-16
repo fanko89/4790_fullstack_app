@@ -21,14 +21,13 @@
 	  if (!data) return;
 	  const params = new URLSearchParams()
 	  params.append('limit', 100)
-	  const response = await fetch(`https://world.openfoodfacts.org?json=true${params}`, {
-	  headers: {
-        'Content-Type': 'application/json'
-      }
-	})
+	  params.append('q', 'javascript')
+	  const response = await fetch(`https://world.openfoodfacts.org/cgi/search.pl?action=process&sort_by=unique_scans_n&page_size=500&json=true${params}`)
+
+
 	  let productObject = await response.json();
+	  console.log(productObject)
 	  products = productObject.products;
-	  console.log(products)
 	});
   
   

@@ -13,8 +13,12 @@
   import { goto } from '$app/navigation'
 
 
+  // function navigate() {
+  //   goto('/src/routes/auth/login')
+  // }
+
   function navigate() {
-    goto('/src/routes/auth/login')
+    goto('/dashboard')
   }
 </script>
 

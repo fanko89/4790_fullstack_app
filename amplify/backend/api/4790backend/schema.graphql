@@ -2,4 +2,9 @@ type Product @model @auth(rules: [{allow: public}]) {
   id: ID!
   sourceId: String!
   product_name: String!
-} 
+  # brand: String!
+  # calories: String!
+  # carbohydrates: String!
+  # protein: String!
+  # fat: String!
+}  

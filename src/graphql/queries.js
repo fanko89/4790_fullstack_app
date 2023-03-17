@@ -1,9 +1,9 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getSkill = /* GraphQL */ `
-  query GetSkill($id: ID!) {
-    getSkill(id: $id) {
+export const getProduct = /* GraphQL */ `
+  query GetProduct($id: ID!) {
+    getProduct(id: $id) {
       id
       sourceId
       product_name
@@ -15,13 +15,13 @@ export const getSkill = /* GraphQL */ `
     }
   }
 `;
-export const listSkills = /* GraphQL */ `
-  query ListSkills(
-    $filter: ModelSkillFilterInput
+export const listProducts = /* GraphQL */ `
+  query ListProducts(
+    $filter: ModelProductFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listSkills(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listProducts(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         sourceId
@@ -37,14 +37,14 @@ export const listSkills = /* GraphQL */ `
     }
   }
 `;
-export const syncSkills = /* GraphQL */ `
-  query SyncSkills(
-    $filter: ModelSkillFilterInput
+export const syncProducts = /* GraphQL */ `
+  query SyncProducts(
+    $filter: ModelProductFilterInput
     $limit: Int
     $nextToken: String
     $lastSync: AWSTimestamp
   ) {
-    syncSkills(
+    syncProducts(
       filter: $filter
       limit: $limit
       nextToken: $nextToken

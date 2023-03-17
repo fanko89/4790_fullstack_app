@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { DataStore } from '@aws-amplify/datastore';
+	import { DataStore, Predicates } from '@aws-amplify/datastore';
 	import { Product } from '../../../models';
 	
 	export let data;
@@ -8,17 +8,17 @@
 	let products = [];
 	let selectedProducts = [];
 	$: allSelected = selectedProducts.length === products.length;
-	$: console.log(selectedProducts)
+	// $: console.log(selectedProducts)
 
 	
 	onMount(async () => {
 	  if (!data) return;
-	  const response = await fetch(`https://world.openfoodfacts.org/cgi/search.pl?action=process&sort_by=unique_scans_n&json=true&page_size=100`)
+	  const response = await fetch(`https://world.openfoodfacts.org/cgi/search.pl?action=process&sort_by=unique_scans_n&json=true&page_size=20`)
   
 	  let productObject = await response.json();
-	  console.log(productObject)
+	//   console.log(productObject)
 	  products = productObject.products;
-	  console.log(products)
+	//   console.log(products)
 	});
 
 		
@@ -29,44 +29,54 @@
 		selectedProducts = products.map((product) => product);
 	  }
 	};
+
+
 	
 	const findOrCreateProduct = async () => {
-	  for (let product of selectedProducts) {
-		const foundProduct = await DataStore.query(Product, (c) => c.name('eq', product.product_name));
-		if (foundProduct.length > 0) {
-		  console.log('Product found already in DataStore');
-		} else {
-		  console.log('Product was not found in DataStore, adding it now');
-		  await DataStore.save(
-			new Product({
-			  name: product.product_name,
-			})
-		  );
-		}
-	  }
-	};
-	const addProductsDataStore = () => {
-		for(let product  of selectedProducts){
-		await DataStore.save(
-			new Product({
-				name: product.product_name,
-				sourceId: product.id
-			})
-		)
-		}
-
-	}
-	
+  for (let product of selectedProducts) {
+    const foundProduct = await DataStore.query(Product, (c) => c.sourceId.eq(product.id))
+    if (foundProduct.length > 0) {
+      console.log('Product found already in DataStore');
+    } else {
+      console.log('Product was not found in DataStore, adding it now');
+      await DataStore.save(new Product({
+        product_name: product.product_name,
+        sourceId: product.id,
+        // brand: product.brands,
+        // calories: product.nutriments.energy_value,
+        // carbohydrates: product.nutriments.carbohydrates,
+        // protein: product.nutriments.proteins,
+        // fat: product.nutriments.fat,
+      }));
+    }
+  }
+}
+	const addProductsDataStore = async () => {
+  for (let product of selectedProducts) {
+    const foundProduct = products.find((item) => item.id === product.id);
+    if (foundProduct) {
+      const sourceId = foundProduct.id || 'default-id';
+      await DataStore.save(
+        new Product({
+          product_name: foundProduct.product_name,
+          sourceId: foundProduct.id,
+			brand: foundProduct.brands,
+        })
+      );
+    }
+  }
+};
 	const deleteSelectedProducts = async () => {
 	  for (let product of selectedProducts) {
-		const productToDelete = await DataStore.query(Product, c => c.name.eq(product.product_name));
+		const productToDelete = await DataStore.query(Product, c => c.product_name.eq(product.product_name));
 		console.log(productToDelete);
 		await DataStore.delete(productToDelete[0]); // delete the first item in the array
 	  }
 	};
 	
 	const deleteAllProducts = async () => {
-	  await DataStore.delete(Product);
+	  await DataStore.delete(Product, Predicates.ALL);
+	  console.log('Products deleted from DataStore');
 	};
   </script>
   
@@ -86,8 +96,8 @@
 			/ {products.length})</label>
 		</th>
 		<th class="text-left">Product</th>
-		<!-- <th class="text-left">Brand</th>
-		<th class="text-left">Calories</th>
+		<!-- <th class="text-left">Brand</th> -->
+		<!-- <th class="text-left">Calories</th>
 		<th class="text-left">Carbohydrates</th>
 		<th class="text-left">Protein</th>
 		<th class="text-left">Fat</th> -->
@@ -101,8 +111,8 @@
 			
 		  <td><input type="checkbox" bind:group={selectedProducts} value={product} /></td>
 		  <td>{product.product_name}</td>
-		  <!-- <td>{product.brands}</td>
-		  <td>{product.nutriments.energy_value}</td>
+		  <!-- <td>{product.brands}</td> -->
+		  <!-- <td>{product.nutriments.energy_value}</td>
 		  <td>{product.nutriments.carbohydrates}</td>
 		  <td>{product.nutriments.proteins}</td>
 		  <td>{product.nutriments.fat}</td> -->
@@ -116,30 +126,6 @@
   {:else}
   <p>Loading products...</p>
   {/if}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -247,160 +233,3 @@
 		{/each}
 	</tbody>
 </table> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-  <script>
-	import { onMount } from 'svelte'
-	import { DataStore, Predicates } from 'aws-amplify'
-	import { Product } from '../../../models'
-  
-	export let products
-
-	
-	let selectedProducts = []
-	$: allSelected = selectedProducts.length === products.length
-	
-	const toggleAll = () => {
-	  if (allSelected) {
-		selectedProducts = [] // uncheck all
-	  } else {
-		selectedProducts = products.map((product) => product)
-	  }
-	}
-	
-	onMount(async () => {
-	   if (!data) return;
-	  const params = new URLSearchParams()
-	  params.append('limit', 100)
-	  params.append('q', 'javascript')
-	  const response = await fetch(`https://world.openfoodfacts.org/cgi/search.pl?action=process&sort_by=unique_scans_n&page_size=500&json=true${params}`)
-	  const productData = await response.json()
-	  const productToAdd = {
-		name: productData.product.product_name,
-		brand: productData.product.brands,
-		category: productData.product.categories,
-		image: productData.product.image_front_url,
-		calories: productData.product.nutriments.energy_value,
-		protein: productData.product.nutriments.proteins,
-		carbohydrates: productData.product.nutriments.carbohydrates,
-		fat: productData.product.nutriments.fat
-	  }
-	  
-	  await DataStore.save(
-		new Product(productToAdd)
-	  )
-	})
-	
-	const toggleSelect = (product) => {
-	  if (selectedProducts.includes(product.name)) {
-		selectedProducts = selectedProducts.filter((name) => name !== product.name)
-	  } else {
-		selectedProducts = [...selectedProducts, product.name]
-	  }
-	}
-	
-	const findOrCreateProduct = async () => {
-	  for (let product of selectedProducts) {
-		const foundProduct = await DataStore.query(Product, (c) => c.name('eq', product))
-		if (foundProduct.length > 0) {
-		  console.log('Product found already in DataStore')
-		} else {
-		  console.log('Product was not found in DataStore, adding it now')
-		  await DataStore.save(
-			new Product({
-			  name: product,
-			  brand: "",
-			  category: "",
-			  image: "",
-			  calories: "",
-			  protein: "",
-			  carbohydrates: "",
-			  fat: ""
-			})
-		  )
-		}
-	  }
-	}
-	
-	const deleteSelectedProducts = async () => {
-	  for (let product of selectedProducts) {
-		const productToDelete = await DataStore.query(Product, c => c.name.eq(product))
-		console.log(productToDelete)
-		await DataStore.delete(productToDelete[0]) // delete the first item in the array
-	  }
-	}
-	
-	const deleteAllProducts = async () => {
-	  await DataStore.delete(Product, Predicates.ALL)
-	}
-	
-	$: selectedProductIds = selectedProducts.map(product => product.name)
-	
-</script>
-  
-<div>
-	<button class="btn btn-primary m-2" class:btn-disabled="{selectedProducts.length === 0}" on:click={findOrCreateProduct}>Add Selected Items to DataStore</button>
-	<button class="btn btn-primary m-2" class:btn-disabled="{selectedProducts.length === 0}" on:click={deleteSelectedProducts}>Delete Selected Items from DataStore</button>
-	<button class="btn btn-danger m-2" class:btn-disabled="{products.length === 0}" on:click={deleteAllProducts}>Delete All Items from DataStore</button>
-	<table class="table">
-		<thead>
-		  <tr>
-			<th><input type="checkbox" bind:checked={allSelected} on:change={toggleAll}></th>
-			<th>Name</th>
-			<th>Brand</th>
-			<th>Category</th>
-			<th>Image</th>
-			<th>Calories</th>
-			<th>Protein</th>
-			<th>Carbohydrates</th>
-			<th>Fat</th>
-		  </tr>
-		</thead>
-		<tbody>
-		  {#each products as product}
-		  <tr>
-			<td><input type="checkbox" bind:checked={selectedProducts.includes(product.name)} on:change={() => toggleSelect(product)}></td>
-			<td>{product.name}</td>
-			<td>{product.brand}</td>
-			<td>{product.category}</td>
-			<td><img src={product.image} alt={product.name} style="height:50px;width:50px;"></td>
-			<td>{product.calories}</td>
-			<td>{product.protein}</td>
-			<td>{product.carbohydrates}</td>
-			<td>{product.fat}</td>
-		  </tr>
-		  {:else}
-		  <tr>
-			<td colspan="9">No products to display.</td>
-		  </tr>
-		  {/each}
-		</tbody>
-	  </table>
-
-</div> -->

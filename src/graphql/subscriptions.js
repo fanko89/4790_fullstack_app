@@ -1,9 +1,9 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateSkill = /* GraphQL */ `
-  subscription OnCreateSkill($filter: ModelSubscriptionSkillFilterInput) {
-    onCreateSkill(filter: $filter) {
+export const onCreateProduct = /* GraphQL */ `
+  subscription OnCreateProduct($filter: ModelSubscriptionProductFilterInput) {
+    onCreateProduct(filter: $filter) {
       id
       sourceId
       product_name
@@ -15,9 +15,9 @@ export const onCreateSkill = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateSkill = /* GraphQL */ `
-  subscription OnUpdateSkill($filter: ModelSubscriptionSkillFilterInput) {
-    onUpdateSkill(filter: $filter) {
+export const onUpdateProduct = /* GraphQL */ `
+  subscription OnUpdateProduct($filter: ModelSubscriptionProductFilterInput) {
+    onUpdateProduct(filter: $filter) {
       id
       sourceId
       product_name
@@ -29,9 +29,9 @@ export const onUpdateSkill = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteSkill = /* GraphQL */ `
-  subscription OnDeleteSkill($filter: ModelSubscriptionSkillFilterInput) {
-    onDeleteSkill(filter: $filter) {
+export const onDeleteProduct = /* GraphQL */ `
+  subscription OnDeleteProduct($filter: ModelSubscriptionProductFilterInput) {
+    onDeleteProduct(filter: $filter) {
       id
       sourceId
       product_name

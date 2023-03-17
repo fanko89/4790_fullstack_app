@@ -1,12 +1,12 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createSkill = /* GraphQL */ `
-  mutation CreateSkill(
-    $input: CreateSkillInput!
-    $condition: ModelSkillConditionInput
+export const createProduct = /* GraphQL */ `
+  mutation CreateProduct(
+    $input: CreateProductInput!
+    $condition: ModelProductConditionInput
   ) {
-    createSkill(input: $input, condition: $condition) {
+    createProduct(input: $input, condition: $condition) {
       id
       sourceId
       product_name
@@ -18,12 +18,12 @@ export const createSkill = /* GraphQL */ `
     }
   }
 `;
-export const updateSkill = /* GraphQL */ `
-  mutation UpdateSkill(
-    $input: UpdateSkillInput!
-    $condition: ModelSkillConditionInput
+export const updateProduct = /* GraphQL */ `
+  mutation UpdateProduct(
+    $input: UpdateProductInput!
+    $condition: ModelProductConditionInput
   ) {
-    updateSkill(input: $input, condition: $condition) {
+    updateProduct(input: $input, condition: $condition) {
       id
       sourceId
       product_name
@@ -35,12 +35,12 @@ export const updateSkill = /* GraphQL */ `
     }
   }
 `;
-export const deleteSkill = /* GraphQL */ `
-  mutation DeleteSkill(
-    $input: DeleteSkillInput!
-    $condition: ModelSkillConditionInput
+export const deleteProduct = /* GraphQL */ `
+  mutation DeleteProduct(
+    $input: DeleteProductInput!
+    $condition: ModelProductConditionInput
   ) {
-    deleteSkill(input: $input, condition: $condition) {
+    deleteProduct(input: $input, condition: $condition) {
       id
       sourceId
       product_name

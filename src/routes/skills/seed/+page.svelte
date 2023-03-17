@@ -13,7 +13,7 @@
 	
 	onMount(async () => {
 	  if (!data) return;
-	  const response = await fetch(`https://world.openfoodfacts.org/cgi/search.pl?action=process&sort_by=unique_scans_n&json=true&page_size=300`)
+	  const response = await fetch(`https://world.openfoodfacts.org/cgi/search.pl?action=process&sort_by=unique_scans_n&json=true&page_size=120`)
   
 	  let productObject = await response.json();
 	//   console.log(productObject)
@@ -40,8 +40,8 @@
     } else {
       console.log('Product was not found in DataStore, adding it now');
       await DataStore.save(new Product({
-        product_name: product.product_name,
-        sourceId: product.id,
+        product_name: product.product_name || 'default-id',
+       sourceId: product.id || 'default-id',
         // brand: product.brands,
         // calories: product.nutriments.energy_value,
         // carbohydrates: product.nutriments.carbohydrates,

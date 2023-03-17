@@ -12,6 +12,8 @@ npx vercel build -prod
 ### ***AWS DataStore using a GraphQL API ***
 
 [poplulates api data into a table and gives the user the option to select an item to add to the datastore and delete items off the datastore ](https://vscode.dev/github/fanko89/4790_fullstack_app/src/routes/skills/seed/+page.svelte#L1) 
+
+
 [URL to website data table](https://4790-fullstack-app.vercel.app/skills/seed)
 
 ### ***Login page that gets client data from aws amplify ***

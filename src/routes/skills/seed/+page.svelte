@@ -40,13 +40,13 @@
     } else {
       console.log('Product was not found in DataStore, adding it now');
       await DataStore.save(new Product({
-        product_name: product.product_name || 'default-id',
-       sourceId: product.id || 'default-id',
-        // brand: product.brands,
-        // calories: product.nutriments.energy_value,
-        // carbohydrates: product.nutriments.carbohydrates,
-        // protein: product.nutriments.proteins,
-        // fat: product.nutriments.fat,
+        product_name: product.product_name || 'N/A',
+       sourceId: product.id || 'N/A',
+        // brand: product.brands || 'N/A',
+        // calories: product.nutriments.energy_value || 'N/A',
+        // carbohydrates: product.nutriments.carbohydrates || 'N/A',
+        // protein: product.nutriments.proteins || 'N/A',
+        // fat: product.nutriments.fat || 'N/A',
       }));
     }
   }
@@ -96,8 +96,8 @@
 			/ {products.length})</label>
 		</th>
 		<th class="text-left">Product</th>
-		<!-- <th class="text-left">Brand</th> -->
-		<!-- <th class="text-left">Calories</th>
+		<!-- <th class="text-left">Brand</th>
+		 <th class="text-left">Calories</th>
 		<th class="text-left">Carbohydrates</th>
 		<th class="text-left">Protein</th>
 		<th class="text-left">Fat</th> -->
@@ -111,8 +111,8 @@
 			
 		  <td><input type="checkbox" bind:group={selectedProducts} value={product} /></td>
 		  <td>{product.product_name}</td>
-		  <!-- <td>{product.brands}</td> -->
-		  <!-- <td>{product.nutriments.energy_value}</td>
+		  <!-- <td>{product.brands}</td>
+		   <td>{product.nutriments.energy_value}</td>
 		  <td>{product.nutriments.carbohydrates}</td>
 		  <td>{product.nutriments.proteins}</td>
 		  <td>{product.nutriments.fat}</td> -->

@@ -8,7 +8,20 @@
 	let products = [];
 	let selectedProducts = [];
 	$: allSelected = selectedProducts.length === products.length;
+	$: console.log(selectedProducts)
+
 	
+	onMount(async () => {
+	  if (!data) return;
+	  const response = await fetch(`https://world.openfoodfacts.org/cgi/search.pl?action=process&sort_by=unique_scans_n&json=true&page_size=100`)
+  
+	  let productObject = await response.json();
+	  console.log(productObject)
+	  products = productObject.products;
+	  console.log(products)
+	});
+
+		
 	const toggleAll = () => {
 	  if (allSelected) {
 		selectedProducts = []; // uncheck all
@@ -16,19 +29,6 @@
 		selectedProducts = products.map((product) => product);
 	  }
 	};
-	
-	onMount(async () => {
-	  if (!data) return;
-	  const params = new URLSearchParams()
-	  params.append('limit', 100)
-	  params.append('q', 'javascript')
-	  const response = await fetch(`https://world.openfoodfacts.org/cgi/search.pl?action=process&sort_by=unique_scans_n&page_size=500&json=true${params}`)
-  
-	  let productObject = await response.json();
-	  console.log(productObject)
-	  products = productObject.products;
-	  console.log(products)
-	});
 	
 	const findOrCreateProduct = async () => {
 	  for (let product of selectedProducts) {
@@ -45,6 +45,17 @@
 		}
 	  }
 	};
+	const addProductsDataStore = () => {
+		for(let product  of selectedProducts){
+		await DataStore.save(
+			new Product({
+				name: product.product_name,
+				sourceId: product.id
+			})
+		)
+		}
+
+	}
 	
 	const deleteSelectedProducts = async () => {
 	  for (let product of selectedProducts) {
@@ -75,7 +86,13 @@
 			/ {products.length})</label>
 		</th>
 		<th class="text-left">Product</th>
+		<!-- <th class="text-left">Brand</th>
+		<th class="text-left">Calories</th>
+		<th class="text-left">Carbohydrates</th>
+		<th class="text-left">Protein</th>
+		<th class="text-left">Fat</th> -->
 		<th class="text-left">Id</th>
+
 	  </tr>
 	</thead>
 	<tbody>
@@ -84,7 +101,14 @@
 			
 		  <td><input type="checkbox" bind:group={selectedProducts} value={product} /></td>
 		  <td>{product.product_name}</td>
+		  <!-- <td>{product.brands}</td>
+		  <td>{product.nutriments.energy_value}</td>
+		  <td>{product.nutriments.carbohydrates}</td>
+		  <td>{product.nutriments.proteins}</td>
+		  <td>{product.nutriments.fat}</td> -->
 		  <td>{product.id}</td>
+
+
 		</tr>
 	  {/each}
 	</tbody>

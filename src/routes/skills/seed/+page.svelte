@@ -13,7 +13,7 @@
 	
 	onMount(async () => {
 	  if (!data) return;
-	  const response = await fetch(`https://world.openfoodfacts.org/cgi/search.pl?action=process&sort_by=unique_scans_n&json=true&page_size=20`)
+	  const response = await fetch(`https://world.openfoodfacts.org/cgi/search.pl?action=process&sort_by=unique_scans_n&json=true&page_size=300`)
   
 	  let productObject = await response.json();
 	//   console.log(productObject)

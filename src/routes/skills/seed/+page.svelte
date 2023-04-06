@@ -1,45 +1,49 @@
 <script>
-	import { onMount } from 'svelte';
-	import { DataStore, Predicates } from '@aws-amplify/datastore';
-	import { Product } from '../../../models';
+	import { onMount } from 'svelte'
+	import { DataStore, Predicates } from 'aws-amplify'
+	import { Product } from '../../../models'
 	
 	export let data;
 	
-	let products = [];
-	let selectedProducts = [];
-	$: allSelected = selectedProducts.length === products.length;
+	let products = []
+	let selectedProducts = []
+	$: allSelected = selectedProducts.length === products.length
 	// $: console.log(selectedProducts)
 
 	
-	onMount(async () => {
-	  if (!data) return;
-	  const response = await fetch(`https://world.openfoodfacts.org/cgi/search.pl?action=process&sort_by=unique_scans_n&json=true&page_size=120`)
-  
-	  let productObject = await response.json();
-	//   console.log(productObject)
-	  products = productObject.products;
-	//   console.log(products)
-	});
 
 		
 	const toggleAll = () => {
 	  if (allSelected) {
-		selectedProducts = []; // uncheck all
+		selectedProducts = [] // uncheck all
 	  } else {
-		selectedProducts = products.map((product) => product);
+		selectedProducts = products.map((product) => product)
 	  }
 	};
+
+	onMount(async () => {
+	  if (!data) return
+	  const response = await fetch(`https://world.openfoodfacts.org/cgi/search.pl?action=process&sort_by=unique_scans_n&json=true&page_size=120`)
+  
+	  let productObject = await response.json()
+	//   console.log(productObject)
+	  products = productObject.products
+	//   console.log(products)
+	});
+
 
 
 	
 	const findOrCreateProduct = async () => {
   for (let product of selectedProducts) {
+		//const foundProduct = await DataStore.query(Product, (c) => c.sourcedId('eq', product.id))
     const foundProduct = await DataStore.query(Product, (c) => c.sourceId.eq(product.id))
     if (foundProduct.length > 0) {
-      console.log('Product found already in DataStore');
+      console.log('Product found already in DataStore')
     } else {
-      console.log('Product was not found in DataStore, adding it now');
-      await DataStore.save(new Product({
+      console.log('Product was not found in DataStore, adding it now')
+      await DataStore.save(
+		new Product({
         product_name: product.product_name || 'N/A',
        sourceId: product.id || 'N/A',
         // brand: product.brands || 'N/A',
@@ -47,7 +51,7 @@
         // carbohydrates: product.nutriments.carbohydrates || 'N/A',
         // protein: product.nutriments.proteins || 'N/A',
         // fat: product.nutriments.fat || 'N/A',
-      }));
+      }))
     }
   }
 }
@@ -66,18 +70,32 @@
     }
   }
 };
-	const deleteSelectedProducts = async () => {
+
+const deleteSelectedProducts = async () => {
 	  for (let product of selectedProducts) {
-		const productToDelete = await DataStore.query(Product, c => c.product_name.eq(product.product_name));
-		console.log(productToDelete);
-		await DataStore.delete(productToDelete[0]); // delete the first item in the array
-	  }
-	};
+		const productToDelete = await DataStore.query(Product, c => c.product_name.eq(product.product_name))
+		console.log(productToDelete)
+			if (productToDelete.length === 0) {
+				console.log('product not found in DataStore')
+				return
+			} else {
+				console.log('product found in DataStore')
+				await DataStore.delete(productToDelete[0]) // delete the first item in the array
+			}
+		}
+	}
+
+
+
+
 	
 	const deleteAllProducts = async () => {
-	  await DataStore.delete(Product, Predicates.ALL);
-	  console.log('Products deleted from DataStore');
-	};
+		try {
+	  await DataStore.delete(Product, Predicates.ALL)
+	} catch (error) {
+	  console.log('error');
+	}
+}
   </script>
   
   <div>
@@ -120,6 +138,8 @@
 
 
 		</tr>
+		{:else}
+		<h3>0 products found</h3>
 	  {/each}
 	</tbody>
   </table>

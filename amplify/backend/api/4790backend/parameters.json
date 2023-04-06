@@ -2,5 +2,11 @@
   "AppSyncApiName": "4790backend",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2023-02-22T19:47:47.348Z"
+  "AuthModeLastUpdated": "2023-04-06T07:06:36.459Z",
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "auth4790backend",
+      "Outputs.UserPoolId"
+    ]
+  }
 }

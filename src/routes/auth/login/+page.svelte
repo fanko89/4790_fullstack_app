@@ -1,4 +1,4 @@
-<!-- 
+
 <script>
 	import { goto } from '$app/navigation'
 	import { Auth } from 'aws-amplify'
@@ -8,10 +8,24 @@
         email: '',
         password: ''
     }
-	// let formError = {
-	// 	wrongPass: false,
-	// 	errorMessage: ''
+	let formError = {
+		wrongPass: false,
+		errorMessage: 'sorry wrong password or email'
+	}
+
+
+	// const handleSubmit = async () => {
+	// 	try {
+	// 		const user = await Auth.signIn(credentials.email, credentials.password)
+	// 		console.log('Login appears to have worked...', user)
+	// 		goto('/avatars')
+	// 	} catch (err) {
+	// 		console.log(err)
+	// 	}
 	// }
+
+
+
 	const handleSubmit = async () => {
 		try {
 			const user = await Auth.signIn(credentials.email, credentials.password)
@@ -45,7 +59,7 @@
                         autocomplete="email"
                         bind:value={credentials.email}
 					/>
-					//{#if formError.wrongPass}<p class="text-red-800"></p>{/if}
+					{#if formError.wrongPass}<p class="text-red-800"></p>{/if}
                     <label class="label" for="password">Password</label>
                     <input class="input input-bordered input-lg w-96" type="password" name="password" placeholder="Password" required autocomplete="password" minlength="8" maxlength="80" bind:value={credentials.password}/>
                     <button class="btn btn-primary btn-lg m-8" type="submit">Log In</button>
@@ -54,4 +68,4 @@
 			</form>
 		</div>
 	</div>
-</div> -->
+</div>

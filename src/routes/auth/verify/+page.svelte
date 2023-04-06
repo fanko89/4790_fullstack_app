@@ -1,4 +1,4 @@
-<!-- <script>
+<script>
 	import { Auth } from 'aws-amplify'
 	import { localUser } from '$lib/stores/localUser'
 	import { goto } from '$app/navigation'
@@ -60,4 +60,4 @@
 			</form>
 		</div>
 	</div>
-</div> -->
+</div>

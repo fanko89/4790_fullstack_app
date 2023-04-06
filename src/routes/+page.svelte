@@ -18,7 +18,7 @@
   // }
 
   function navigate() {
-    goto('/dashboard')
+    goto('/auth/login')
   }
 </script>
 

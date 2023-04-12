@@ -19,7 +19,7 @@
 			localUser = user
 		})
 		.catch((err) => console.log('Checking for user... ', err))
-	async function logInOut() {
+		async function logInOut() {
 		if (localUser) {
 			try {
 				await Auth.signOut()

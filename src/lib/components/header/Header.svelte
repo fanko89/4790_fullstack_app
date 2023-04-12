@@ -19,20 +19,29 @@
 			localUser = user
 		})
 		.catch((err) => console.log('Checking for user... ', err))
-		async function logInOut() {
-		if (localUser) {
-			try {
-				await Auth.signOut()
-				//if (DataStore.state === 'Running') await DataStore.clear()
-				await DataStore.clear()
-				localUser = null
-				goto('/')
-			} catch (error) {
-				console.log('error signing out: ', error)
-			}
-		} else {
-			goto('/auth/login')
+	async function logInOut() {
+		try {
+			await DataStore.clear()
+			await Auth.signOut()
+			goto('/')
+		} catch (error) {
+			console.log('error signing out: ', error)
 		}
+		
+		// if (localUser) {
+		// 	try {
+		// 		await Auth.signOut()
+		// 		//if (DataStore.state === 'Running') await DataStore.clear()
+		// 		await DataStore.clear()
+		// 		localUser = null
+		// 		goto('/')
+		// 	} catch (error) {
+		// 		console.log('error signing out: ', error)
+		// 	}
+		// } else {
+		// 	goto('/auth/login')
+		// }
+
 	}
 		
 </script>

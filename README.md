@@ -9,13 +9,15 @@ npm.cmd run-script start - to start
 npx vercel --prod
 npx vercel build -prod
 ```
+### ***Change profile picture ***
+[Let's users decided what profile picture they want and Img is saved to S3 bucket](https://vscode.dev/github/fanko89/4790_fullstack_app/blob/202014d05e7487f8d52500c09cdfaea622c42068/src/lib/components/header/Header.svelte#L21)
 
 ### ***AWS DataStore using a GraphQL API ***
 
-[poplulates api data into a table and gives the user the option to select an item to add to the datastore and delete items off the datastore ](https://vscode.dev/github/fanko89/4790_fullstack_app/src/routes/skills/seed/+page.svelte#L1) 
+[poplulates api data into a table and gives the user the option to select an item to add to the datastore and delete items off the datastore ](https://vscode.dev/github/fanko89/4790_fullstack_app/src/routes/items/seed/+page.svelte#L1) 
 
 
-[URL to website data table](https://4790-fullstack-app.vercel.app/skills/seed)
+[URL to website data table](https://4790-fullstack-app.vercel.app/items/seed)
 
 ### ***Login page that gets client data from aws amplify ***
 

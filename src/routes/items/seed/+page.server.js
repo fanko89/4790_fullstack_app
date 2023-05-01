@@ -46,29 +46,29 @@
 	import { onMount } from 'svelte'
 	import { DataStore, Predicates } from 'aws-amplify'
 	import { Skill } from '../../models'
-	let skills = []
-	let selectedSkills = []
+	let items = []
+	let selecteditems = []
 	let allSynced = false
-	$: allSelected = selectedSkills.length === skills.length
+	$: allSelected = selecteditems.length === items.length
 	onMount(async () => {
-		//skills = await DataStore.query(Skill)
-		//console.log(skills)
+		//items = await DataStore.query(Skill)
+		//console.log(items)
 		DataStore.observeQuery(Skill).subscribe((snapshot) => {
 			const { items, isSynced } = snapshot
-			skills = items
+			items = items
 			allSynced = isSynced
 			console.log(`[Snapshot] item count: ${items.length}, isSynced: ${isSynced}`)
 		})
 	})
 	const toggleAll = () => {
 		if (allSelected) {
-			selectedSkills = [] // uncheck all
+			selecteditems = [] // uncheck all
 		} else {
-			selectedSkills = skills.map((skill) => skill)
+			selecteditems = items.map((skill) => skill)
 		}
 	}
-	const deleteSelectedSkills = async () => {
-		for (let skill of selectedSkills) {
+	const deleteSelecteditems = async () => {
+		for (let skill of selecteditems) {
 			const skillToDelete = await DataStore.query(Skill, (c) => c.sourcedId.eq(skill.id))
 			console.log(skillToDelete)
 			if (skillToDelete.length === 0) {
@@ -80,7 +80,7 @@
 			}
 		}
 	}
-	const deleteAllSkills = async () => {
+	const deleteAllitems = async () => {
 		try {
 			await DataStore.delete(Skill, Predicates.ALL)
 		} catch (error) {
@@ -92,17 +92,17 @@
 <div>
 	<button
 		class="btn btn-primary m-2"
-		class:btn-disabled={selectedSkills.length === 0}
-		on:click={deleteSelectedSkills}>Delete Selected Items</button>
-	<button class="btn btn-primary m-2" on:click={deleteAllSkills}>Delete all Items</button>
+		class:btn-disabled={selecteditems.length === 0}
+		on:click={deleteSelecteditems}>Delete Selected Items</button>
+	<button class="btn btn-primary m-2" on:click={deleteAllitems}>Delete all Items</button>
 </div>
 <table class="table w-full overflow-y-auto">
 	<thead>
 		<tr>
 			<th>
 				<label>
-					<input type="checkbox" checked={allSelected} on:change={toggleAll} /> Select All ({selectedSkills.length}
-					/ {skills.length})</label>
+					<input type="checkbox" checked={allSelected} on:change={toggleAll} /> Select All ({selecteditems.length}
+					/ {items.length})</label>
 			</th>
 			<th class="text-left">Skill</th>
 			<th class="text-left">Id</th>
@@ -112,14 +112,14 @@
 		{#if !allSynced}
 			<h3>Loading...</h3>
 		{/if}
-		{#each skills as skill}
+		{#each items as skill}
 			<tr>
-				<td><input type="checkbox" bind:group={selectedSkills} value={skill} /></td>
+				<td><input type="checkbox" bind:group={selecteditems} value={skill} /></td>
 				<td>{skill.name}</td>
 				<td>{skill.id}</td>
 			</tr>
 		{:else}
-			<h3>0 skills found</h3>
+			<h3>0 items found</h3>
 		{/each}
 	</tbody>
 </table> */
@@ -130,7 +130,7 @@
 
 // // // OAUTH SETUP EXAMPLE
 
-// import { SKILLS_CLIENT, SKILLS_SECRET } from '$env/static/private'
+// import { items_CLIENT, items_SECRET } from '$env/static/private'
 
 // let lightcastToken = null
 // let serverStartTime = new Date()
@@ -158,8 +158,8 @@
 // async function getToken() {
 //     const params = new URLSearchParams()
 //     params.append('grant_type', 'client_credentials')
-//     params.append('client_id', SKILLS_CLIENT)
-//     params.append('client_secret', SKILLS_SECRET)
+//     params.append('client_id', items_CLIENT)
+//     params.append('client_secret', items_SECRET)
 //     params.append('scope', 'emsi_open')
 
 //     try {

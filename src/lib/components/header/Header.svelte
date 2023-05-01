@@ -83,12 +83,12 @@ function toggleDropdown() {
 			</a>
 			<ul tabindex="0" class="mt-3 p-2 dropdown-content bg-base-100 menu menu-compact shadow rounded-box w-36">
 			  <li>
-				<a href="/skills" class="menu-title btn btn-ghost normal-case text-xl dropdown-toggle">
+				<a href="/items" class="menu-title btn btn-ghost normal-case text-xl dropdown-toggle">
 				  Data
 				</a>
 			  </li>
 			  <li>
-				<a href="/skills/seed" class="menu-title btn btn-ghost normal-case text-xl dropdown-toggle">
+				<a href="/items/seed" class="menu-title btn btn-ghost normal-case text-xl dropdown-toggle">
 				  Add Data
 				</a>
 			  </li>

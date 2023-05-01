@@ -156,15 +156,15 @@ const deleteSelectedProducts = async () => {
 	import { DataStore, Predicates } from 'aws-amplify'
 	import { Skill } from '../../models'
 	export let data
-	let skills = []
-	let selectedSkills = []
-	$: allSelected = selectedSkills.length === skills.length
-	$: console.log(selectedSkills)
+	let items = []
+	let selecteditems = []
+	$: allSelected = selecteditems.length === items.length
+	$: console.log(selecteditems)
 	const toggleAll = () => {
 		if (allSelected) {
-			selectedSkills = [] // uncheck all
+			selecteditems = [] // uncheck all
 		} else {
-			selectedSkills = skills.map((skill) => skill)
+			selecteditems = items.map((skill) => skill)
 		}
 	}
 	onMount(async () => {
@@ -173,7 +173,7 @@ const deleteSelectedProducts = async () => {
 		params.append('limit', 1000)
 		//params.append('q', 'javascript')
 		const response = await fetch(
-			`https://emsiservices.com/skills/versions/latest/skills?${params}`,
+			`https://emsiservices.com/items/versions/latest/items?${params}`,
 			{
 				method: 'GET',
 				headers: {
@@ -181,13 +181,13 @@ const deleteSelectedProducts = async () => {
 				}
 			}
 		)
-		let skillsObject = await response.json()
-		//console.log(skillsObject)
-		skills = skillsObject.data
+		let itemsObject = await response.json()
+		//console.log(itemsObject)
+		items = itemsObject.data
 	})
-	/* const addSkillsToDataStore = async () => {
-		for (let skill of selectedSkills) {
-			const foundSkill = skills.find((item) => item.id === skill)
+	/* const additemsToDataStore = async () => {
+		for (let skill of selecteditems) {
+			const foundSkill = items.find((item) => item.id === skill)
 			//console.log(foundSkill)
 			await DataStore.save(
 				new Skill({
@@ -198,7 +198,7 @@ const deleteSelectedProducts = async () => {
 		}
 	} */
 	const findOrCreateSkill = async () => {
-		for (let skill of selectedSkills) {
+		for (let skill of selecteditems) {
 			//const foundSkill = await DataStore.query(Skill, (c) => c.sourcedId('eq', skill.id))
 			const foundSkill = await DataStore.query(Skill, (c) => c.sourcedId.eq(skill.id))
 			if (foundSkill.length > 0) {
@@ -214,39 +214,39 @@ const deleteSelectedProducts = async () => {
 			}
 		}
 	}
-	const deleteSelectedSkills = async () => {
-		for (let skill of selectedSkills) {
+	const deleteSelecteditems = async () => {
+		for (let skill of selecteditems) {
 			const skillToDelete = await DataStore.query(Skill, c => c.sourcedId.eq(skill.id))
 			console.log(skillToDelete)
 			await DataStore.delete(skillToDelete[0]) // delete the first item in the array
 		}
 	}
-	const deleteAllSkills = async () => {
+	const deleteAllitems = async () => {
 		await DataStore.delete(Skill, Predicates.ALL)
 	}
 </script>
 
 <div>
-	<button class="btn btn-primary m-2" class:btn-disabled="{selectedSkills.length === 0}" on:click={findOrCreateSkill}>Add Selected Items to DataStore</button>
-	<button class="btn btn-primary m-2" class:btn-disabled="{selectedSkills.length === 0}" on:click={deleteSelectedSkills}>Delete Selected Items</button>
-	<button class="btn btn-primary m-2" on:click={deleteAllSkills}>Delete all Items</button>
+	<button class="btn btn-primary m-2" class:btn-disabled="{selecteditems.length === 0}" on:click={findOrCreateSkill}>Add Selected Items to DataStore</button>
+	<button class="btn btn-primary m-2" class:btn-disabled="{selecteditems.length === 0}" on:click={deleteSelecteditems}>Delete Selected Items</button>
+	<button class="btn btn-primary m-2" on:click={deleteAllitems}>Delete all Items</button>
 </div>
 <table class="table w-full overflow-y-auto">
 	<thead>
 		<tr>
 			<th>
 				<label>
-					<input type="checkbox" checked={allSelected} on:change={toggleAll} /> Select All ({selectedSkills.length}
-					/ {skills.length})</label>
+					<input type="checkbox" checked={allSelected} on:change={toggleAll} /> Select All ({selecteditems.length}
+					/ {items.length})</label>
 			</th>
 			<th class="text-left">Skill</th>
 			<th class="text-left">Id</th>
 		</tr>
 	</thead>
 	<tbody>
-		{#each skills as skill}
+		{#each items as skill}
 			<tr>
-				<td><input type="checkbox" bind:group={selectedSkills} value={skill} /></td>
+				<td><input type="checkbox" bind:group={selecteditems} value={skill} /></td>
 				<td>{skill.name}</td>
 				<td>{skill.id}</td>
 			</tr>

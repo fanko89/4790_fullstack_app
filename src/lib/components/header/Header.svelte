@@ -73,13 +73,13 @@ function toggleDropdown() {
 		<a href="/avatars" class="btn btn-ghost normal-case text-xl">Avatars</a>
         <a href="/movies" class="btn btn-ghost normal-case text-xl">Movies</a>
         <a href="/dashboard" class="btn btn-ghost normal-case text-xl">Meals</a>
-        <a href="/aggregator" class="btn btn-ghost normal-case text-xl">Aggregator</a>
+        <a href="/aggregator" class="btn btn-ghost normal-case text-xl">Food News</a>
         <a href="/drink" class="btn btn-ghost normal-case text-xl">Drinks</a>
 		
 		{#if $localUser}
 		<div class="dropdown dropdown-end">
 			<a href="#" class="btn btn-ghost normal-case text-xl dropdown-toggle">
-			  GraphQL API
+			  Food API
 			</a>
 			<ul tabindex="0" class="mt-3 p-2 dropdown-content bg-base-100 menu menu-compact shadow rounded-box w-36">
 			  <li>

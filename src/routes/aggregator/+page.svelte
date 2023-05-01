@@ -8,7 +8,7 @@
     storyPic = story.urlToImage
 	}
 </script>
-
+<h1 class="text-4xl text-center font-bold py-4">News About Food</h1>
 <div class="drawer overflow-x-hidden overflow-y-auto">
 	<input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
 	<div class="drawer-content flex flex-col items-center justify-center">

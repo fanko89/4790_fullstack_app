@@ -11,7 +11,20 @@
 		const drinkData = await response.json()
 		// console.log(drinkData)
 		allDrinks = drinkData.drinks
+// Fetch ingredients for each drink
+		for (let i = 0; i < allDrinks.length; i++) {
+      const drink = allDrinks[i]
+      const ingredientResponse = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.idDrink}`)
+      const ingredientData = await ingredientResponse.json()
+      drink.ingredients = []
 
+      for (let j = 1; j <= 15; j++) {
+        const ingredient = ingredientData.drinks[0][`strIngredient${j}`]
+        if (ingredient) {
+          drink.ingredients.push(ingredient)
+        }
+      }
+	}
 		
 		//a way to change url from api images (not used in my project but here for reference)
 		// allDrinks = drinkData.drinks.map(drink => {
@@ -32,6 +45,13 @@
 			<p>{drink.strDrink}</p>
 			<h1 class=" h-4 text-5x1 font-bold ">Category:</h1>
 			<p>{drink.strCategory}</p>
+			<!-- <h1 class="h-4 text-5xl font-bold">Ingredients:</h1> -->
+			<!-- {#each drink.ingredients as ingredient} -->
+			<!-- <p>{drink.ingredients}</p> -->
+		  <!-- {:else}
+			<p>No ingredients found</p>
+		  {/each} -->
+
 		</figcaption>
 		<br>
 		<br>

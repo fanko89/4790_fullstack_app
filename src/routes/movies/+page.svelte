@@ -24,7 +24,7 @@
 {/if}
 
 <main class="flex flex-wrap justify-center">
-  <h1 class="text-4xl text-center font-bold py-4">Enter a movie</h1>
+  <h1 class="text-4xl text-center font-bold py-4">Enter a movie you want to watch while eating</h1>
   <div class="hero">
  
 		<form method="POST" action="/movies?/search" use:enhance>

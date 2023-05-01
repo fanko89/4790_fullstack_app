@@ -33,7 +33,7 @@ npx vercel build -prod
 ```
 
 
-### ***AWS DataStore using a GraphQL API ***
+### AWS DataStore using a GraphQL API
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 poplulates api data into a table and gives the user the option to select an item to add to the datastore and delete items off the datastore [poplulates code] (https://github/fanko89/4790_fullstack_app/src/routes/items/seed/+page.svelte#L1) 
 

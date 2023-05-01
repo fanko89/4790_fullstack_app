@@ -10,7 +10,7 @@ export async function load({ params }) {
         lastName,
         address: faker.address.streetAddress(),
         firstName: faker.name.firstName(),
-        avatar:`https://avatars.dicebear.com/api/big-smile/${lastName}.svg`,
+        avatar:`https://avatars.dicebear.com/api/identicon/${lastName}.svg`,
         title: faker.name.jobTitle(),
         phone: faker.phone.number(),
         email: faker.internet.email(`${firstName}`, `${lastName}`)

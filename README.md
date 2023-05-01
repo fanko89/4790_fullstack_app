@@ -79,6 +79,10 @@ npx vercel build -prod
 
 [SPOONACULAR APIKEY](https://spoonacular.com/food-api)
 
+[PEXELS APIKEY](https://www.pexels.com/api/)
+
+[ALPHAVANATAGE APIKEY](https://www.alphavantage.co/)
+
 ### ***lifecycle functions***
 
 [Onmount async fetch data to populate drink page.](https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/src/routes/drink/+page.svelte#L10)

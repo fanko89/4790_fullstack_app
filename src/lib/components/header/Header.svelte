@@ -1,43 +1,66 @@
 <script>
-	import { enhance } from '$app/forms'
 	import { theme } from '$lib/stores/theme'
-	import {Auth, DataStore} from 'aws-amplify'
+	import { Auth, DataStore, Storage } from 'aws-amplify'
 	import { goto } from '$app/navigation'
-	let themeOptions = ['light', 'dark', 'cupcake', 'cyberpunk', 'coffee', 'winter']
-
+	import { onMount } from 'svelte'
+	import { localUser } from '$lib/stores/localUser'
+	import ProfilePicModal from '$lib/components/ProfilePicModal/ProfilePicModal.svelte'
+  
+	let themeOptions = ['light', 'dark', 'cupcake', 'aqua', 'dracula', 'winter']
 	let selectedTheme
-	// console.log('about to try and authenticate user...')
-	// let localUser = JSON.parse($user)
-	// console.log(localUser)
-
+	let open = false
+  
 	$: if (selectedTheme && selectedTheme !== 'Theme') $theme = selectedTheme
-	let localUser
-	console.log('About to try and authenticate user...')
-	Auth.currentAuthenticatedUser()
-		.then((user) => {
-			console.log('User is authenticated...', user.attributes.email)
-			localUser = user
-		})
-		.catch((err) => console.log('Checking for user... ', err))
-		
-		async function logInOut() {
-		if (localUser) {
-			try {
-				await Auth.signOut()
-				//if (DataStore.state === 'Running') await DataStore.clear()
-				await DataStore.clear()
-				localUser = null
-				goto('/')
-			} catch (error) {
-				console.log('error signing out: ', error)
-			}
-		} else {
-			goto('/auth/login')
-		}
-	}
-		
-</script>
 
+	let dropdownOpen = false;
+
+function toggleDropdown() {
+  dropdownOpen = !dropdownOpen;
+}
+  
+	onMount(async () => {
+	  console.log($localUser)
+	  Auth.currentAuthenticatedUser()
+	  .then(async (user) => {
+		console.log('User is authenticated as', user.attributes.email)
+		try {
+		  const imageFile = await Storage.list('profilePic/', { level: 'protected', pageSize: 1})
+		  //console.log(imageFile)
+		  const signedURL = await Storage.get(imageFile.results[0].key, { level: 'protected' })
+		  //console.log(signedURL)
+		  user.attributes.picture = signedURL
+		} catch (err) {
+		  console.log('It is likely that the user has not yet uploaded a profile pic.', err)
+		}
+		$localUser = user
+	  })
+	  .catch((err) => {
+		console.log(err)
+		$localUser = null
+		goto('/auth/login')
+	  })
+	})
+  
+	async function logInOut() {
+	  if ($localUser) {
+		try {
+		  await Auth.signOut()
+		  //if (DataStore.state === 'Running') await DataStore.clear()
+		  await DataStore.clear()
+		  $localUser = null
+		  goto('/')
+		} catch (error) {
+		  console.log('error signing out: ', error)
+		}
+	  } else {
+		goto('/auth/login')
+	  }
+	}
+  
+	function toggleMenu() {
+	  open = !open;
+	}
+  </script>
 <header class="navbar bg-base-100">
 	<div class="flex-1">
 		<a href="/" class="btn btn-ghost">
@@ -52,29 +75,49 @@
         <a href="/dashboard" class="btn btn-ghost normal-case text-xl">Meals</a>
         <a href="/aggregator" class="btn btn-ghost normal-case text-xl">Aggregator</a>
         <a href="/drink" class="btn btn-ghost normal-case text-xl">Drinks</a>
-		<a href="/skills/seed" class="btn btn-ghost normal-case text-xl">GraphQL API</a>
-		<p>{#if localUser}
-			{localUser.attributes.email}
-		{/if}</p>
+		
+		{#if $localUser}
+		<div class="dropdown dropdown-end">
+			<a href="#" class="btn btn-ghost normal-case text-xl dropdown-toggle">
+			  GraphQL API
+			</a>
+			<ul tabindex="0" class="mt-3 p-2 dropdown-content bg-base-100 menu menu-compact shadow rounded-box w-36">
+			  <li>
+				<a href="/skills" class="menu-title btn btn-ghost normal-case text-xl dropdown-toggle">
+				  Data
+				</a>
+			  </li>
+			  <li>
+				<a href="/skills/seed" class="menu-title btn btn-ghost normal-case text-xl dropdown-toggle">
+				  Add Data
+				</a>
+			  </li>
+			</ul>
+		  </div>
+		{/if}
 	</div>
-	
+
 	<div class="dropdown dropdown-end">
 		<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-		<div class="avatar placeholder" class:online={localUser}>
-			<div class="bg-neutral-focus text-neutral-content rounded-full w-16">
-				<label tabindex="0" class="btn m-1">{localUser?.attributes?.name ?? '?'}</label>
+		<!-- svelte-ignore a11y-label-has-associated-control -->
+
+		<div class="avatar" class:online={$localUser}>
+			<div class="bg-neutral-focus text-neutral-content rounded-xl w-24">
+				{#if $localUser?.attributes?.picture}
+				<img src={$localUser?.attributes?.picture} alt='Profile Pic of User' tabIndex="0"/>
+				{:else}
+				<label tabindex="0" class="block w-full h-full text-center">{$localUser?.attributes?.name ?? 'Login'}</label>
+				{/if}
 			</div>
 		</div>
-
 		<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 		<ul
 			tabindex="0"
 			class="mt-3 p-2 dropdown-content bg-base-100 menu menu-compact shadow rounded-box w-36">
-			{#if localUser}
-				<li>Welcome {localUser.attributes.name}!</li>
+			{#if $localUser}
+				<li>Welcome {$localUser?.attributes?.name}!</li>
 			{/if}
-			<li><a href="none">Profile</a></li>
-			<li><a href="none">Settings</a></li>
+			<li><a on:click={() => open = !open}>ProfilePic</a></li>
 			<li>
 				<select bind:value={selectedTheme} class="select w-full max-x-xs">
 					<option disabled selected>Theme</option>
@@ -85,7 +128,9 @@
 					{/each}
 				</select>
 			</li>
-			<li><a  on:click={logInOut}>{localUser ? 'Logout' : 'Login'}</a></li>
+			<li><a on:click={logInOut}>{$localUser ? 'Logout' : 'Login'}</a></li>
 		</ul>
 	</div>
 </header>
+
+<ProfilePicModal isModalOpen={open} imagePath='profilePic/' folderLevel='protected' multipleItems='false'/>

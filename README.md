@@ -12,9 +12,9 @@ npx vercel build -prod
 ```
 ### Change profile picture 
 [Shows default image unless user uploaded one is authenticated](https://vscode.dev/github/fanko89/4790_fullstack_app/blob/202014d05e7487f8d52500c09cdfaea622c42068/src/lib/components/header/Header.svelte#L21)
- 
+
 [Let's users decided what profile picture they want and Img is saved to S3 bucket](https://vscode.dev/github/fanko89/4790_fullstack_app/blob/cf52613834d8058e16244eb16d305763aed7ebc2/src/routes/upload/+page.svelte#L12-L13) 
-##### here's an example code of the submitHandler function in the code calls the preventDefault() method on the event object to prevent the default form submission behavior, creates a new FileReader object, logs the first file object from the files array to the console, reads the contents of the file as an ArrayBuffer using the readAsArrayBuffer() method, sets an onload event handler to execute a function when the file has finished loading, logs the contents of the file as an ArrayBuffer to the console when the file has finished loading, and uploads the file to an S3 bucket using the Amplify Storage API's put() method while logging the upload result or error to the console.
+##### For the below example, the submitHandler function calls the preventDefault() method on the event object to prevent the default form submission behavior, creates a new FileReader object, logs the first file object from the files array to the console, reads the contents of the file as an ArrayBuffer using the readAsArrayBuffer() method, sets an onload event handler to execute a function when the file has finished loading, logs the contents of the file as an ArrayBuffer to the console when the file has finished loading, and uploads the file to an S3 bucket using the Amplify Storage API's put() method while logging the upload result or error to the console.
 ```javascript
 	async function submitHandler(event) {
 		event.preventDefault()

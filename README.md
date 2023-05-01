@@ -35,7 +35,7 @@ npx vercel build -prod
 
 ### AWS DataStore using a GraphQL API
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-poplulates api data into a table and gives the user the option to select an item to add to the datastore and delete items off the datastore [poplulates code] (https://github/fanko89/4790_fullstack_app/src/routes/items/seed/+page.svelte#L1) 
+poplulates api data into a table and gives the user the option to select an item to add to the datastore and delete items off the datastore [poplulates code](https://github/fanko89/4790_fullstack_app/src/routes/items/seed/+page.svelte#L1) 
 
 
 This is my data store that you can add items to to the store if you have user permision level to do so.[URL to website data table](https://4790-fullstack-app.vercel.app/items/seed)

@@ -5,12 +5,14 @@ npm.cmd run-script build - to build
 npm.cmd run-script start - to start
 ```
 ## Vercel hosting 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 [4790 FullStack App](https://4790-fullstack-app.vercel.app) But only when using the Vercel CLI to push to production!  Had to install node-fetch, isomorphic-unfetch, and aws-crt and then deploy using 
 ```bash
 npx vercel --prod
 npx vercel build -prod
 ```
 ### Change profile picture 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 [Shows default image unless user uploaded one is authenticated](https://github/fanko89/4790_fullstack_app/blob/202014d05e7487f8d52500c09cdfaea622c42068/src/lib/components/header/Header.svelte#L21)
 
 [Let's users decided what profile picture they want and Img is saved to S3 bucket](https://github/fanko89/4790_fullstack_app/blob/cf52613834d8058e16244eb16d305763aed7ebc2/src/routes/upload/+page.svelte#L12-L13) 
@@ -32,7 +34,7 @@ npx vercel build -prod
 
 
 ### ***AWS DataStore using a GraphQL API ***
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 poplulates api data into a table and gives the user the option to select an item to add to the datastore and delete items off the datastore [poplulates code] (https://github/fanko89/4790_fullstack_app/src/routes/items/seed/+page.svelte#L1) 
 
 
@@ -53,6 +55,7 @@ twetween progress bar to switch between health score to Weight watcher point [tw
 
 
 ### ***transisions in and out with button click on details/description/instruction/ingredients for recipes***
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 This shows details about the recipe[details](https://github/fanko89/3790_rich_internet_application_development_svelte/src/routes/dashboard/+page.svelte#L164)
 
@@ -78,14 +81,17 @@ this shows what ingredients needed need to make the food in steps using the addS
 ```
 
 ### ***animation***
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 flip animation on ingredints when populating with button[populate code](https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/src/routes/dashboard/+page.svelte#L195)
 
 ### ***toggle modal***
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 toggle modal to open when clicking on meal image and has a link to source page for recipe [toggle code](https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/src/routes/dashboard/+page.svelte#L118)
 
 ### ***different API***
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 [OMDB API](https://www.omdbapi.com/)
 
@@ -100,7 +106,7 @@ toggle modal to open when clicking on meal image and has a link to source page f
 [ALPHAVANATAGE APIKEY](https://www.alphavantage.co/)
 
 ### ***lifecycle functions***
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 [Onmount] async fetch data to populate drink page.(https://github/fanko89/3790_rich_internet_application_development_svelte/src/routes/drink/+page.svelte#L10)
 ```javascript
 onMount(async () => {
@@ -112,11 +118,11 @@ onMount(async () => {
 ```
 [Onmount for data image](https:///github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/lib/components/Image/Image.svelte#L10)
 
-[onMount IntersectionObserver](https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/lib/components/Image/IntersectionObserver.svelte#L13)
+[onMount IntersectionObserver](https://github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/lib/components/Image/IntersectionObserver.svelte#L13)
 
 
 ### ***Data Inputs***
-
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 [email input](https://github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/routes/auth/signup/+page.svelte#L32)
 
 [Last Name input](https://vscode.dev/github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/routes/auth/signup/+page.svelte#L63)
@@ -126,7 +132,7 @@ onMount(async () => {
 [password input](https://github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/routes/auth/signup/+page.svelte#L41)
 
 ### ***array methods***
-
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Filters through to only show movies[filter code](https://github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/routes/api/movie/+server.js#L45)
 ```javascript
 return allTheMovies.filter(movie => (movie.Type === 'movie' && movie.Poster !== 'N/A'))
@@ -135,7 +141,7 @@ return allTheMovies.filter(movie => (movie.Type === 'movie' && movie.Poster !== 
 [_map_](https://github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/routes/avatars/+page.js#L5)
 
 ### ***user events***
-
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 [_onclick toggle modal_](https://github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/lib/components/MovieModal/MovieModal.svelte#L15)
 
 [_onclick move story to page_](https://github/fanko89/3790_rich_internet_application_development_svelte/blob/f1e7d93c5406015ba8d5018e2b7d72728ca7ded6/src/routes/aggregator/+page.svelte#L30)

@@ -11,11 +11,37 @@
 
 <script>
   import { goto } from '$app/navigation'
+  import { Auth } from 'aws-amplify';
+  import { localUser } from '$lib/stores/localUser'
+  
 
 
   function navigate() {
     goto('/auth/login')
   }
+  const credentials = {
+	  email: 'crowntheundecided@gmail.com',
+	  password: 'Guest123!'
+	};
+
+
+
+  
+  const handleGuestSignIn = async () => {
+    try {
+      // Sign in as a guest with predefined guest credentials
+      const user = await Auth.signIn(credentials.email, credentials.password); // Replace with actual guest credentials
+      console.log('Guest login successful:', user);
+      goto('/dashboard'); // Redirect to the dashboard or guest-accessible page
+    } catch (errorObj) {
+      console.error('Guest login error:', errorObj);
+      formError.errorMessage = errorObj.message;
+      if (errorObj.code === 'NotAuthorizedException') {
+        formError.wrongPass = true;
+      }
+    }
+  };
+
 </script>
 
 <div class="hero min-h-screen" style="background-image: url(/images/van.JPG); background-size: cover; background-position: center;">
@@ -25,11 +51,15 @@
       <h1 class="mb-5 text-5xl font-bold">Hello</h1>
       <p class="mb-5 text-lg font-medium">Welcome! This is my DGM 3790 SvelteKit Project</p>
       <button class="btn btn-wide btn-secondary mb-10" on:click="{navigate}">Login</button>
-      <div class="flex justify-center items-center gap-4">
+        <!-- Login as Guest -->
+        <form on:submit|preventDefault={handleGuestSignIn}>
+        <button class="btn btn-wide btn-secondary" on:click={{handleGuestSignIn}}>Login as Guest</button>
+        </form>
+      <!-- <div class="flex justify-center items-center gap-4">
         <a href="#" class="icon-btn text-2xl"><i class="fab fa-facebook"></i></a>
         <a href="#" class="icon-btn text-2xl"><i class="fab fa-twitter"></i></a>
         <a href="#" class="icon-btn text-2xl"><i class="fab fa-instagram"></i></a>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

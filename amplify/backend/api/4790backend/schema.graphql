@@ -1,5 +1,6 @@
-type Product @model @auth(rules: [{allow: owner}, {allow: groups, groups: ["admin"], operations: [read, create, update, delete]}]) {
+type Product @model @auth(rules: [{allow: owner}, {allow: groups, groups: ["admin"], operations: [read, create, update, delete]}, {allow: groups, groups: ["guest"], operations: [read]}]) {
   id: ID!
   sourceId: String!
   product_name: String!
-} 
+}
+ 

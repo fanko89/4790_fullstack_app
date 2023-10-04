@@ -36,7 +36,7 @@
         "@aws-amplify/cli": "^10.7.1",
         "@aws-amplify/datastore": "^4.1.2",
         "@aws-sdk/client-cognito-identity": "^3.267.0",
-        "@fortawesome/fontawesome-free": "^6.4.0",
+        "@fortawesome/fontawesome-free": "^6.4.2",
         "@fortawesome/fontawesome-svg-core": "^6.4.0",
         "@fortawesome/free-solid-svg-icons": "^6.4.0",
         "@fortawesome/svelte-fontawesome": "^0.2.0",

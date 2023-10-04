@@ -77,6 +77,17 @@ export const schema = {
                                     "update",
                                     "delete"
                                 ]
+                            },
+                            {
+                                "groupClaim": "cognito:groups",
+                                "provider": "userPools",
+                                "allow": "groups",
+                                "groups": [
+                                    "guest"
+                                ],
+                                "operations": [
+                                    "read"
+                                ]
                             }
                         ]
                     }
@@ -86,6 +97,6 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "codegenVersion": "3.4.0",
+    "codegenVersion": "3.4.4",
     "version": "591777db0633cd2953b0eba84ff30709"
 };

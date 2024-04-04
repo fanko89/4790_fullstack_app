@@ -44,12 +44,12 @@
 
 </script>
 
-<div class="hero min-h-screen" style="background-image: url(/images/van.JPG); background-size: cover; background-position: center;">
+<div class="hero min-h-screen" style="background-color: black; background-size: cover; background-position: center;">
   <div class="hero-overlay bg-opacity-60"></div>
   <div class="hero-content text-center text-neutral-content">
     <div class="max-w-md mx-auto">
       <h1 class="mb-5 text-5xl font-bold">Hello</h1>
-      <p class="mb-5 text-lg font-medium">Welcome! This is my DGM 3790 SvelteKit Project</p>
+      <p class="mb-5 text-lg font-medium">Welcome! This project showcases my Svelte framework integrated with Amplify AWS.</p>
       <button class="btn btn-wide btn-secondary mb-10" on:click="{navigate}">Login</button>
         <!-- Login as Guest -->
         <form on:submit|preventDefault={handleGuestSignIn}>
